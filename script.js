@@ -15,6 +15,10 @@ document.getElementById("mm_start").addEventListener("click", function( event ) 
         mm_start.remove(); 
         radios[0].disabled = true;
         radios[1].disabled = true;
+        radios[2].disabled = true;
+        if (i == 2) {
+          console.log("The user selected Intersex")  
+        };
         if (i == 1) {
           console.log("The user selected Female")  
         };
