@@ -4,3 +4,6 @@ body {
 #yeshug {
     font-size: 2em;
 }
+#yeshug:hover {
+    font-weight: bold;
+}
