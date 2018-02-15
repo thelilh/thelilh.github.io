@@ -3,6 +3,7 @@ body {
 }
 #yeshug {
     font-size: 2em;
+    cursor: pointer;
 }
 #yeshug:hover {
     font-weight: bold;
