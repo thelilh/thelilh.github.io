@@ -1,3 +1,21 @@
 body {
-    background-color: #964273;
+    text-align: center;
+   background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Transgender_Pride_flag.svg/2000px-Transgender_Pride_flag.svg.png");
+    background-repeat: no-repeat;
+    background-size: fill;
+    font-family: sans-serif;
+}
+
+ul {
+    list-style: none;
+}
+
+li a {
+   text-decoration: none;
+    color: black;
+    font-size: 2em;
+}
+li a:hover {
+   text-decoration: underline;
+    color: white;
 }
