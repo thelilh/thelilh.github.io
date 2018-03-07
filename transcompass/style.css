@@ -1,0 +1,40 @@
+
+body {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+   user-select: none;
+    text-align: center;
+    font: sans-serif;
+}
+
+input[type="radio"]{
+    visibility:hidden;
+    float: left;
+}
+div input {
+    margin-left: -1em;
+}
+
+form {
+    text-align: center;
+}
+
+#update {
+    border: none;
+    background: transparent;
+    padding: auto;
+}
+#update:focus {outline:0;}
+
+p {
+    color: black;
+    text-decoration: none;
+}
+
+.red {
+    font-size: 1.5em;
+    color: red;
+    text-decoration: underline;
+}
