@@ -7,6 +7,9 @@ body {
    user-select: none;
     text-align: center;
     font: sans-serif;
+    background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Transgender_Pride_flag.svg/2000px-Transgender_Pride_flag.svg.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 input[type="radio"]{
