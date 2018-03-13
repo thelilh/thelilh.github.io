@@ -1,6 +1,6 @@
 function UpdateImage() {
     'use strict';
-    var o1, o2, o3, o4, o5, o6, o7, o8, uwumode, board, t1, t2, t3, t4;
+    var o1, o2, o3, o4, o5, o6, o7, o8, uwumode, board, t1, t2, t3, t4, yougot;
     o1 = document.getElementById("po1"); /* Do you like to program? */
     o2 = document.getElementById("po2"); /* Do you like to program? */
     o3 = document.getElementById("mo1"); /* Do you want someone to be your master? */
@@ -15,6 +15,7 @@ function UpdateImage() {
     t2 = document.getElementById("title2");
     t3 = document.getElementById("title3");
     t4 = document.getElementById("title4");
+    yougot = document.getElementById("yougot");
     
     board.src = "board.png";
     if (o1.checked === true && o2.checked === false) {
@@ -22,6 +23,11 @@ function UpdateImage() {
             if (o3.checked === true && o4.checked === false) {
                 if (o5.checked === true && o6.checked === false) {
                     board.src = "board8.png";
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You are pretty normal uwu";
+                    } else {
+                        yougot.innerHTML = "You got: Neutral";
+                    }
                 }
             }
         }
@@ -31,6 +37,11 @@ function UpdateImage() {
             if (o3.checked === false && o4.checked === true) {
                 if (o5.checked === false && o6.checked === true) {
                     board.src = "board8.png";
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You are pretty normal uwu";
+                    } else {
+                        yougot.innerHTML = "You got: Neutral";
+                    }
                 }
             }
         }
@@ -40,6 +51,11 @@ function UpdateImage() {
             if (o3.checked === true && o4.checked === false) {
                 if (o5.checked === true && o6.checked === false) {
                     board.src = "board8.png";
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You are pretty normal uwu";
+                    } else {
+                        yougot.innerHTML = "You got: Neutral";
+                    }
                 }
             }
         }
@@ -49,6 +65,11 @@ function UpdateImage() {
             if (o3.checked === false && o4.checked === true) {
                 if (o5.checked === false && o6.checked === true) {
                     board.src = "board8.png";
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You are pretty normal uwu";
+                    } else {
+                        yougot.innerHTML = "You got: Neutral";
+                    }
                 }
             }
         }
@@ -58,6 +79,11 @@ function UpdateImage() {
             if (o3.checked === true && o4.checked === false) {
                 if (o5.checked === true && o6.checked === false) {
                     board.src = "board7.png";
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You like to program uwu";
+                    } else {
+                        yougot.innerHTML = "You got: Techie";
+                    }
                 }
             }
         }
@@ -67,6 +93,11 @@ function UpdateImage() {
             if (o3.checked === false && o4.checked === true) {
                 if (o5.checked === true && o6.checked === false) {
                     board.src = "board6.png";
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You like to program and to >///<";
+                    } else {
+                        yougot.innerHTML = "You got: Prude Techie";
+                    }
                 }
             }
         }
@@ -76,6 +107,11 @@ function UpdateImage() {
             if (o3.checked === false && o4.checked === true) {
                 if (o5.checked === true && o6.checked === false) {
                     board.src = "board5.png";
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You like to >///<";
+                    } else {
+                        yougot.innerHTML = "You got: Prude Neutral";
+                    }
                 }
             }
         }
@@ -85,6 +121,11 @@ function UpdateImage() {
             if (o3.checked === false && o4.checked === true) {
                 if (o5.checked === true && o6.checked === false) {
                     board.src = "board4.png";
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You like guns and to >///<";
+                    } else {
+                        yougot.innerHTML = "You got: Prude Gun Nut";
+                    }
                 }
             }
         }
@@ -94,6 +135,11 @@ function UpdateImage() {
             if (o3.checked === true && o4.checked === false) {
                 if (o5.checked === true && o6.checked === false) {
                     board.src = "board3.png";
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You like guns uwu";
+                    } else {
+                        yougot.innerHTML = "You got: Gun Nut";
+                    }
                 }
             }
         }
@@ -103,6 +149,11 @@ function UpdateImage() {
             if (o3.checked === true && o4.checked === false) {
                 if (o5.checked === false && o6.checked === true) {
                     board.src = "board2.png";
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You like guns and daddy/mommy uwu";
+                    } else {
+                        yougot.innerHTML = "You got: Slut Gun Nut";
+                    }
                 }
             }
         }
@@ -112,6 +163,11 @@ function UpdateImage() {
             if (o3.checked === true && o4.checked === false) {
                 if (o5.checked === false && o6.checked === true) {
                     board.src = "board1.png";
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You like to program and your daddy/mommy uwu";
+                    } else {
+                        yougot.innerHTML = "You got: Slut Techie";
+                    }
                 }
             }
         }
@@ -121,6 +177,11 @@ function UpdateImage() {
             if (o3.checked === true && o4.checked === false) {
                 if (o5.checked === false && o6.checked === true) {
                     board.src = "board9.png";
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You like your daddy/mommy uwu";
+                    } else {
+                        yougot.innerHTML = "You got: Slut";
+                    }
                 }
             }
         }
@@ -130,6 +191,11 @@ function UpdateImage() {
             if (o3.checked === true && o4.checked === false) {
                 if (o5.checked === true && o6.checked === false) {
                     board.src = "board3.png";
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You like guns uwu";
+                    } else {
+                        yougot.innerHTML = "You got: Gun Nut";
+                    }
                 }
             }
         }
@@ -139,6 +205,11 @@ function UpdateImage() {
             if (o3.checked === true && o4.checked === false) {
                 if (o5.checked === true && o6.checked === false) {
                     board.src = "board3.png";
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You like guns uwu";
+                    } else {
+                        yougot.innerHTML = "You got: Gun Nut";
+                    }
                 }
             }
         }
@@ -148,6 +219,11 @@ function UpdateImage() {
             if (o3.checked === true && o4.checked === false) {
                 if (o5.checked === false && o6.checked === true) {
                     board.src = "board9.png";
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You like your daddy/mommy uwu";
+                    } else {
+                        yougot.innerHTML = "You got: Slut";
+                    }
                 }
             }
         }
@@ -157,6 +233,11 @@ function UpdateImage() {
             if (o3.checked === false && o4.checked === true) {
                 if (o5.checked === true && o6.checked === false) {
                     board.src = "board5.png";
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You like to >///<";
+                    } else {
+                        yougot.innerHTML = "You got: Prude";
+                    }
                 }
             }
         }
@@ -166,6 +247,11 @@ function UpdateImage() {
             if (o3.checked === false && o4.checked === true) {
                 if (o5.checked === false && o6.checked === true) {
                     board.src = "board7.png";
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You like to program uwu";
+                    } else {
+                        yougot.innerHTML = "You got: Techie";
+                    }
                 }
             }
         }
@@ -175,6 +261,11 @@ function UpdateImage() {
             if (o3.checked === false && o4.checked === true) {
                 if (o5.checked === false && o6.checked === true) {
                     board.src = "board3.png";
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You like guns uwu";
+                    } else {
+                        yougot.innerHTML = "You got: Gun Nut";
+                    }
                 }
             }
         }
@@ -279,12 +370,246 @@ function UpdateRadio() {
     if (uwumode.checked === true) {
         t1.innerHTML = "Nyaa, do you like to program uwu";
         t2.innerHTML = "Do you have any daddies or mommies uwu";
-        t3.innerHTML = "Do you often >///< uwu";
+        t3.innerHTML = "Do you often >///<";
         t4.innerHTML = "Are guns cool uwu";
     } else {
         t1.innerHTML = "Do you have an knowledge of any programming language?";
         t2.innerHTML = "Do you have an sexual fantasies that may be out of the 'normal' for some? (i.e wanting to be someone's master)";
         t3.innerHTML = "If someone was standing naked in front of you, would you be scared? (if you know the person, not some random person)";
         t4.innerHTML = "Do you currently own a firearm or do you want to own a firearm?";
+    }
+    if (o1.checked === true && o2.checked === false) {
+        if (o7.checked === true && o8.checked === false) {
+            if (o3.checked === true && o4.checked === false) {
+                if (o5.checked === true && o6.checked === false) {
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You are pretty normal uwu";
+                    } else {
+                        yougot.innerHTML = "You got: Neutral";
+                    }
+                }
+            }
+        }
+    }
+    if (o1.checked === true && o2.checked === false) {
+        if (o7.checked === true && o8.checked === false) {
+            if (o3.checked === false && o4.checked === true) {
+                if (o5.checked === false && o6.checked === true) {
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You are pretty normal uwu";
+                    } else {
+                        yougot.innerHTML = "You got: Neutral";
+                    }
+                }
+            }
+        }
+    }
+    if (o1.checked === false && o2.checked === true) {
+        if (o7.checked === false && o8.checked === true) {
+            if (o3.checked === true && o4.checked === false) {
+                if (o5.checked === true && o6.checked === false) {
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You are pretty normal uwu";
+                    } else {
+                        yougot.innerHTML = "You got: Neutral";
+                    }
+                }
+            }
+        }
+    }
+    if (o1.checked === false && o2.checked === true) {
+        if (o7.checked === false && o8.checked === true) {
+            if (o3.checked === false && o4.checked === true) {
+                if (o5.checked === false && o6.checked === true) {
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You are pretty normal uwu";
+                    } else {
+                        yougot.innerHTML = "You got: Neutral";
+                    }
+                }
+            }
+        }
+    }
+    if (o1.checked === true && o2.checked === false) {
+        if (o7.checked === false && o8.checked === true) {
+            if (o3.checked === true && o4.checked === false) {
+                if (o5.checked === true && o6.checked === false) {
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You like to program uwu";
+                    } else {
+                        yougot.innerHTML = "You got: Techie";
+                    }
+                }
+            }
+        }
+    }
+    if (o1.checked === true && o2.checked === false) {
+        if (o7.checked === false && o8.checked === true) {
+            if (o3.checked === false && o4.checked === true) {
+                if (o5.checked === true && o6.checked === false) {
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You like to program and to >///<";
+                    } else {
+                        yougot.innerHTML = "You got: Prude Techie";
+                    }
+                }
+            }
+        }
+    }
+    if (o1.checked === true && o2.checked === false) {
+        if (o7.checked === true && o8.checked === false) {
+            if (o3.checked === false && o4.checked === true) {
+                if (o5.checked === true && o6.checked === false) {
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You like to >///<";
+                    } else {
+                        yougot.innerHTML = "You got: Prude Neutral";
+                    }
+                }
+            }
+        }
+    }
+    if (o1.checked === false && o2.checked === true) {
+        if (o7.checked === true && o8.checked === false) {
+            if (o3.checked === false && o4.checked === true) {
+                if (o5.checked === true && o6.checked === false) {
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You like guns and to >///<";
+                    } else {
+                        yougot.innerHTML = "You got: Prude Gun Nut";
+                    }
+                }
+            }
+        }
+    }
+    if (o1.checked === false && o2.checked === true) {
+        if (o7.checked === true && o8.checked === false) {
+            if (o3.checked === true && o4.checked === false) {
+                if (o5.checked === true && o6.checked === false) {
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You like guns uwu";
+                    } else {
+                        yougot.innerHTML = "You got: Gun Nut";
+                    }
+                }
+            }
+        }
+    }
+    if (o1.checked === false && o2.checked === true) {
+        if (o7.checked === true && o8.checked === false) {
+            if (o3.checked === true && o4.checked === false) {
+                if (o5.checked === false && o6.checked === true) {
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You like guns and daddy/mommy uwu";
+                    } else {
+                        yougot.innerHTML = "You got: Slut Gun Nut";
+                    }
+                }
+            }
+        }
+    }
+    if (o1.checked === true && o2.checked === false) {
+        if (o7.checked === false && o8.checked === true) {
+            if (o3.checked === true && o4.checked === false) {
+                if (o5.checked === false && o6.checked === true) {
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You like to program and your daddy/mommy uwu";
+                    } else {
+                        yougot.innerHTML = "You got: Slut Techie";
+                    }
+                }
+            }
+        }
+    }
+    if (o1.checked === true && o2.checked === false) {
+        if (o7.checked === true && o8.checked === false) {
+            if (o3.checked === true && o4.checked === false) {
+                if (o5.checked === false && o6.checked === true) {
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You like your daddy/mommy uwu";
+                    } else {
+                        yougot.innerHTML = "You got: Slut";
+                    }
+                }
+            }
+        }
+    }
+    if (o1.checked === false && o2.checked === true) {
+        if (o7.checked === true && o8.checked === false) {
+            if (o3.checked === true && o4.checked === false) {
+                if (o5.checked === true && o6.checked === false) {
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You like guns uwu";
+                    } else {
+                        yougot.innerHTML = "You got: Gun Nut";
+                    }
+                }
+            }
+        }
+    }
+    if (o1.checked === false && o2.checked === true) {
+        if (o7.checked === true && o8.checked === false) {
+            if (o3.checked === true && o4.checked === false) {
+                if (o5.checked === true && o6.checked === false) {
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You like guns uwu";
+                    } else {
+                        yougot.innerHTML = "You got: Gun Nut";
+                    }
+                }
+            }
+        }
+    }
+    if (o1.checked === false && o2.checked === true) {
+        if (o7.checked === false && o8.checked === true) {
+            if (o3.checked === true && o4.checked === false) {
+                if (o5.checked === false && o6.checked === true) {
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You like your daddy/mommy uwu";
+                    } else {
+                        yougot.innerHTML = "You got: Slut";
+                    }
+                }
+            }
+        }
+    }
+    if (o1.checked === false && o2.checked === true) {
+        if (o7.checked === false && o8.checked === true) {
+            if (o3.checked === false && o4.checked === true) {
+                if (o5.checked === true && o6.checked === false) {
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You like to >///<";
+                    } else {
+                        yougot.innerHTML = "You got: Prude";
+                    }
+                }
+            }
+        }
+    }
+    if (o1.checked === true && o2.checked === false) {
+        if (o7.checked === false && o8.checked === true) {
+            if (o3.checked === false && o4.checked === true) {
+                if (o5.checked === false && o6.checked === true) {
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You like to program uwu";
+                    } else {
+                        yougot.innerHTML = "You got: Techie";
+                    }
+                }
+            }
+        }
+    }
+    if (o1.checked === false && o2.checked === true) {
+        if (o7.checked === true && o8.checked === false) {
+            if (o3.checked === false && o4.checked === true) {
+                if (o5.checked === false && o6.checked === true) {
+                    if (uwumode.checked === true) {
+                        yougot.innerHTML = "You like guns uwu";
+                    } else {
+                        yougot.innerHTML = "You got: Gun Nut";
+                    }
+                }
+            }
+        }
     }
 }
