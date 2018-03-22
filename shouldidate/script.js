@@ -9,10 +9,10 @@ function agechecker() {
     if (Math.abs(~~age_a - ~~age_b) > 3 && age_a > 0 && age_a < 100 && age_b > 0 && age_b < 100) {
         document.getElementById("dif").innerHTML = "No";
     }
-    if (age_a < 15 || age_b < 15) {
+    if (age_a < 15 || age_b < 15 && age_a > 0 && age_a < 100 && age_b > 0 && age_b < 100) {
         document.getElementById("dif").innerHTML = "No";
     }
-    if (age_a === age_b) {
+    if (age_a === age_b && age_a > 0 && age_a < 100 && age_b > 0 && age_b < 100) {
         document.getElementById("dif").innerHTML = "Yes";
     }
     setTimeout(function () {

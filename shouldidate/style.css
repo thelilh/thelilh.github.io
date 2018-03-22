@@ -4,6 +4,15 @@
     text-align: center;
     font-family: sans-serif;
 }
+input {
+    border: none;
+    background-color: lightgray;
+    border-radius: 1em;
+    margin-top: .1em;
+}
+input:focus { 
+    background-color: gray;
+}
 
 #dif {
 }
