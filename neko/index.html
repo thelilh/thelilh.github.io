@@ -1,0 +1,41 @@
+<!doctype HTML>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>English to Neko English</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body onload="UpdateOutput()">
+        
+        <h2>Input:</h2>
+        <textarea id="input" placeholder="This is input" cols="30" rows="5"></textarea><br>
+        <h2>Output:</h2>
+        <textarea id="output" placeholder="This is output" readonly cols="30" rows="5"></textarea><br>
+        <button onclick="CopyOutput()">Copy</button>
+        <script>
+            var input, output, text;
+            input = document.getElementById("input");
+            output = document.getElementById("output");
+            text = "";
+            function UpdateOutput() {
+                var chars = {'r':'w','l':'w','R':"W",'L':"W"};
+                var s = input.value;
+                s = s.replace(/[rlRL]/g, m => chars[m]);
+                if (input.value.length > 0) {
+                    output.value = s + " UwU";
+                }
+                setTimeout(function() {
+                    UpdateOutput();
+                }, 1);
+            }
+            function CopyOutput() {
+                var copyText = document.getElementById("output");
+                copyText.select();
+                document.execCommand("Copy");
+                setTimeout(function() {
+                    window.getSelection().removeAllRanges();
+                }, 1);
+            }
+        </script>
+    </body>
+</html>
