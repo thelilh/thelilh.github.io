@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Hannah's Chatbot</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <script src="script.js"></script>
+        <div id="chatbox">
+            <div id="chattext">
+                <p id="actualtext">Chatbot: Hello!</p>
+                <form>
+                    <input id="chattbox" type="text">
+                </form>
+            </div>
+        </div>
+        <script>
+            $(document).keyup(function(event) {
+                if ($("#chattbox").is(":focus") && event.key == "Enter") {
+                    $(document).getElementById("actualtext").innerHTML = $(document).getElementById("actualtext").innerHTML + " You: " + $(document).getElementById("chattbox");
+                }
+            });
+        </script>
+    </body>
+</html>

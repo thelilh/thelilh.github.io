@@ -1,0 +1,28 @@
+iframe.bg(src="https://fenwick67.github.io/xmb/?test")
+h1.top XMB
+#xmb-contain
+  #xmb
+    ul
+      li(
+      v-for="column,index in columns"
+      v-bind:class="{active:column.active}"
+      v-bind:style="{left:column.position.x+'px'}"
+      ).column
+        div.cell(
+          v-bind:class="{active:column.active}"        
+          v-on:click="highlightCell(column.index,0)"
+        )
+          i.material-icons.xmb-icon {{column.icon}}
+          label {{column.title}}
+        ul
+          li.cell.submenu(
+            v-for="item,itemIndex in column.items" 
+            v-bind:class="{active:item.active}" 
+            v-bind:style="{top:item.position.y+'px'}"            
+            v-on:click="highlightCell(column.index,itemIndex)"
+          )            
+            
+            a(v-bind:href="item.active?item.href||'#missinglink':'#'")
+              i.material-icons.xmb-icon {{item.icon}}
+              label {{item.title}}
+                label.subtitle {{item.subtitle}}

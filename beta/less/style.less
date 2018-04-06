@@ -1,0 +1,131 @@
+@ICON_SIZE: 100px;
+@PADDING: 10px;
+@TRANSITION_TIME: 0.3s;
+
+html,body{
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  color:white;
+  background-color:transparent;
+  font-family:"Roboto",sans-serif;
+}
+.bg{
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  border:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+}
+.top{
+  position:absolute;
+  margin-left:1em;
+  top:0;
+  left:0;
+}
+#xmb-contain{
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  background-color:rgba(0,0,0,0.01);
+}
+#xmb{
+  width:@ICON_SIZE;
+  position:relative;
+  height:@ICON_SIZE;
+  flex-direction:column;
+  justify-content:center;
+  margin-bottom:@ICON_SIZE * 2;
+  margin-right:@ICON_SIZE * 1;
+  user-select:none;
+}
+#xmb>ul{
+  display:flex;  
+  flex:1 1 auto;
+  position:absolute;
+  top:10%;
+  flex-wrap:nowrap;
+  flex-direction:row;
+  justify-content:center;
+}
+#xmb li,#xmb ul{
+  margin:0;
+  padding:0;
+  list-style-type:none; 
+  position:absolute;
+}
+#xmb li.column>ul{
+  position:relative;
+  display:flex;
+  flex-direction:column
+}
+#xmb .cell{
+  width:@ICON_SIZE;
+  height:@ICON_SIZE;
+  background-color:transparent;
+  margin:@PADDING;
+  opacity:0.4;
+  position:absolute;
+  transition: all @TRANSITION_TIME;
+  cursor:pointer;
+}
+#xmb .cell.active{
+  opacity:1;
+}
+#xmb .column:not(.active) .cell.submenu:not(.active){
+  display:none;
+  opacity:0;
+}
+#xmb .column{
+  transition:all @TRANSITION_TIME;
+  flex:0 1 auto;
+  margin:0 0;
+}
+#xmb .column.active{
+  flex:1 1 auto;
+  //flex-basis:100px;
+}
+.xmb-icon{
+  text-align:center;
+  width:100%;
+  font-size:@ICON_SIZE * 0.65;  
+  text-shadow:0px 0px 15px rgba(0,0,0,0.5);
+}
+#xmb label{
+  display:block;
+  text-align:center;  
+  text-shadow:0px 0px 5px rgba(0,0,0,1);
+  font-size: 0.2*@ICON_SIZE;
+  text-transform: capitalize;
+  cursor:pointer;
+}
+#xmb .cell.submenu,#xmb .cell.submenu>*{
+  line-height:@ICON_SIZE;
+}
+#xmb .submenu label:not(.subtitle){  
+  position:absolute;
+  top:0;
+  line-height:@ICON_SIZE/2;
+  margin-left:@ICON_SIZE;
+  font-size:@ICON_SIZE*0.3;
+}
+#xmb .submenu label.subtitle{  
+  position:absolute;
+  top:@ICON_SIZE*0.55;
+  margin-left:0;
+  font-size:@ICON_SIZE*0.19;  
+  line-height:0;
+}
+a{
+  color:inherit;
+  cursor:pointer;
+}

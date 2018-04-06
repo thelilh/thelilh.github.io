@@ -35,6 +35,7 @@
         <h2>Output:</h2>
         <textarea id="output" placeholder="This is output" readonly cols="30" rows="5"></textarea><br>
         <button onclick="CopyOutput()">Copy</button>
+        <button onclick="TweetOutput()">Tweet</button>
         <script>
             var input, output, text;
             input = document.getElementById("input");
@@ -53,11 +54,29 @@
             }
             function CopyOutput() {
                 var copyText = document.getElementById("output");
-                copyText.select();
-                document.execCommand("Copy");
-                setTimeout(function() {
-                    window.getSelection().removeAllRanges();
-                }, 1);
+                if (output.value.length > 0) {
+                    copyText.select();
+                    document.execCommand("Copy");
+                    setTimeout(function() {
+                        window.getSelection().removeAllRanges();
+                    }, 1);
+                } else {
+                    alert('Pwease enter something fwist >//<');
+                }
+            }
+            function TweetOutput() {
+                var textToTweet = output.value;
+                if (output.value.length > 0) {
+                     if (textToTweet.length > 280) {
+                        alert('Tweet should be less than 280 Chars');
+                     }
+                     else {
+                        var twtLink = 'https://twitter.com/intent/tweet?text=' +encodeURIComponent(textToTweet);
+                        window.open(twtLink,'_blank');
+                     }
+                } else {
+                    alert('Pwease enter something fwist >//<');
+                }
             }
         </script>
     </body>
