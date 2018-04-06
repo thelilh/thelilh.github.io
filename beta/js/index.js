@@ -218,11 +218,17 @@ hammertime.on('swipeleft', function(ev) {
 hammertime.on('swiperight', function(ev) {
 	xmbVue.handleKey('x', -1);     
 });
-hammertime.on('swipeup', function(ev) {
-	xmbVue.handleKey('y', -1);       
-});
-hammertime.on('swipedown', function(ev) {
-	xmbVue.handleKey('y', 1);       
+$('body').swipe( {
+  swipeUp:function(event, direction, distance, duration) {
+    xmbVue.handleKey('y', -1);
+  },
+  swipeDown:function(event, direction, distance, duration) {
+    xmbVue.handleKey('y', 1); 
+  },
+  click:function(event, target) { 
+  },
+  threshold:100,
+  allowPageScroll:"vertical"
 });
 $('body').on("mousewheel", _.throttle(scrollHandler, 10));
 
