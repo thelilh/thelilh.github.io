@@ -213,10 +213,10 @@ $('body').on('keyup', function (e) {
 var myElement = document.body;
 var hammertime = new Hammer(myElement);
 hammertime.on('swipeleft', function(ev) {
-	xmbVue.handleKey('x', -1);     
+	xmbVue.handleKey('x', 1);     
 });
 hammertime.on('swiperight', function(ev) {
-	xmbVue.handleKey('x', 1);     
+	xmbVue.handleKey('x', -1);     
 });
 hammertime.on('swipeup', function(ev) {
 	xmbVue.handleKey('y', -1);       
