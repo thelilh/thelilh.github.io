@@ -220,10 +220,10 @@ hammertime.on('swiperight', function(ev) {
 });
 $('body').swipe( {
   swipeUp:function(event, direction, distance, duration) {
-    xmbVue.handleKey('y', -1);
+    xmbVue.handleKey('y', 1);
   },
   swipeDown:function(event, direction, distance, duration) {
-    xmbVue.handleKey('y', 1); 
+    xmbVue.handleKey('y', -1); 
   },
   click:function(event, target) { 
   },
