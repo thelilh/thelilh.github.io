@@ -35,15 +35,13 @@ function GetTextFromInputs() {
 
 function UpdateImage() {
     'use strict';
-    var uwumode, board, t1, t2, t3, t4, yougot;
-    board = document.getElementById("board");
+    var uwumode, t1, t2, t3, t4, yougot;
     uwumode = document.getElementById("uwumode");
     t1 = document.getElementById("title1");
     t2 = document.getElementById("title2");
     t3 = document.getElementById("title3");
     t4 = document.getElementById("title4");
     yougot = document.getElementById("yougot");   
-    board.src = "board.png";
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
     if (o7.checked === false && o8.checked === false) {
