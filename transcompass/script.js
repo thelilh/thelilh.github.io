@@ -158,7 +158,7 @@ function UpdateRadio() {
 		yougot.innerHTML = "You got: " + newText;
 	}
 	var checkedinputs = inputs.filter(x => IsChecked(x) === true);
-	if(checkedinputs == true) { //check if empty 
+	if(checkedinputs != false) { //check if empty 
 		
 		var posx = checkedinputs.map(x => x.positionx).reduce((acc,input) => acc + input);
 		var posy = checkedinputs.map(x => x.positiony).reduce((acc,input) => acc + input);
