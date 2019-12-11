@@ -1,275 +1,50 @@
+var pInputs = {yes: document.getElementById("po1"), no:  document.getElementById("po2"), message:"Techie", positionx: 0, positiony : -1} /* Do you like to program? */
+var mInputs = {yes: document.getElementById("mo1"), no:  document.getElementById("mo2"), message:"Slut", positionx: -1, positiony : 0}/* Do you want someone to be your master? */
+var nInputs = {yes: document.getElementById("no1"), no:  document.getElementById("no2"), message:"Prude", positionx: 1, positiony : 0}/* Are you shocked by seeing people naked? */
+var gInputs = {yes: document.getElementById("go1"), no:  document.getElementById("go2"), message:"Gun Nut", positionx: 0, positiony : 1}/* Do you like guns? */
+var inputs = [pInputs, mInputs, nInputs, gInputs];
+var board = document.getElementById("board");
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+
+var img = new Image();
+img.src = "board.png";
+img.onload = function() {canvas.height = img.height; canvas.width = img.width; ctx.drawImage(img,0,0);}
+
+function IsChecked(someInput) {
+	var anyChecked = someInput.yes.checked || someInput.no.checked;
+	if(!anyChecked) {
+		return null;
+	}
+	return someInput.yes.checked;
+}
+function GetScaleForImage(img,canvas) {
+	var scaleH = canvas.height / img.height;
+	var scaleW = canvas.width / img.width;
+	return Math.min(scaleH,scaleW);
+}
+function GetTextFromInputs() {
+	if(!inputs.reduce((acc, input) => acc && (IsChecked(input) !== null))) {
+		return null;
+	}
+	var str = inputs.filter( x => IsChecked(x)).map(x => x.message);
+	console.log(str);
+	if(str == false){return "Neutral";}
+	return str;
+}
+
 function UpdateImage() {
     'use strict';
-    var o1, o2, o3, o4, o5, o6, o7, o8, uwumode, board, t1, t2, t3, t4, yougot;
-    o1 = document.getElementById("po1"); /* Do you like to program? */
-    o2 = document.getElementById("po2"); /* Do you like to program? */
-    o3 = document.getElementById("mo1"); /* Do you want someone to be your master? */
-    o4 = document.getElementById("mo2"); /* Do you want someone to be your master? */
-    o5 = document.getElementById("no1"); /* Are you shocked by seeing people naked? */
-    o6 = document.getElementById("no2"); /* Are you shocked by seeing people naked? */
-    o7 = document.getElementById("go1"); /* Do you like guns? */
-    o8 = document.getElementById("go2"); /* Do you like guns? */
+    var uwumode, board, t1, t2, t3, t4, yougot;
     board = document.getElementById("board");
     uwumode = document.getElementById("uwumode");
     t1 = document.getElementById("title1");
     t2 = document.getElementById("title2");
     t3 = document.getElementById("title3");
     t4 = document.getElementById("title4");
-    yougot = document.getElementById("yougot");
-    
+    yougot = document.getElementById("yougot");   
+	alert("updatedimage")
     board.src = "board.png";
-    if (o1.checked === true && o2.checked === false) {
-        if (o7.checked === true && o8.checked === false) {
-            if (o3.checked === true && o4.checked === false) {
-                if (o5.checked === true && o6.checked === false) {
-                    board.src = "board8.png";
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You are pretty normal uwu";
-                    } else {
-                        yougot.innerHTML = "You got: Neutral";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === true && o2.checked === false) {
-        if (o7.checked === true && o8.checked === false) {
-            if (o3.checked === false && o4.checked === true) {
-                if (o5.checked === false && o6.checked === true) {
-                    board.src = "board8.png";
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You are pretty normal uwu";
-                    } else {
-                        yougot.innerHTML = "You got: Neutral";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === false && o2.checked === true) {
-        if (o7.checked === false && o8.checked === true) {
-            if (o3.checked === true && o4.checked === false) {
-                if (o5.checked === true && o6.checked === false) {
-                    board.src = "board8.png";
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You are pretty normal uwu";
-                    } else {
-                        yougot.innerHTML = "You got: Neutral";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === false && o2.checked === true) {
-        if (o7.checked === false && o8.checked === true) {
-            if (o3.checked === false && o4.checked === true) {
-                if (o5.checked === false && o6.checked === true) {
-                    board.src = "board8.png";
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You are pretty normal uwu";
-                    } else {
-                        yougot.innerHTML = "You got: Neutral";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === true && o2.checked === false) {
-        if (o7.checked === false && o8.checked === true) {
-            if (o3.checked === true && o4.checked === false) {
-                if (o5.checked === true && o6.checked === false) {
-                    board.src = "board7.png";
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You like to program uwu";
-                    } else {
-                        yougot.innerHTML = "You got: Techie";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === true && o2.checked === false) {
-        if (o7.checked === false && o8.checked === true) {
-            if (o3.checked === false && o4.checked === true) {
-                if (o5.checked === true && o6.checked === false) {
-                    board.src = "board6.png";
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You like to program and to >///<";
-                    } else {
-                        yougot.innerHTML = "You got: Prude Techie";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === true && o2.checked === false) {
-        if (o7.checked === true && o8.checked === false) {
-            if (o3.checked === false && o4.checked === true) {
-                if (o5.checked === true && o6.checked === false) {
-                    board.src = "board5.png";
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You like to >///<";
-                    } else {
-                        yougot.innerHTML = "You got: Prude Neutral";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === false && o2.checked === true) {
-        if (o7.checked === true && o8.checked === false) {
-            if (o3.checked === false && o4.checked === true) {
-                if (o5.checked === true && o6.checked === false) {
-                    board.src = "board4.png";
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You like guns and to >///<";
-                    } else {
-                        yougot.innerHTML = "You got: Prude Gun Nut";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === false && o2.checked === true) {
-        if (o7.checked === true && o8.checked === false) {
-            if (o3.checked === true && o4.checked === false) {
-                if (o5.checked === true && o6.checked === false) {
-                    board.src = "board3.png";
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You like guns uwu";
-                    } else {
-                        yougot.innerHTML = "You got: Gun Nut";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === false && o2.checked === true) {
-        if (o7.checked === true && o8.checked === false) {
-            if (o3.checked === true && o4.checked === false) {
-                if (o5.checked === false && o6.checked === true) {
-                    board.src = "board2.png";
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You like guns and daddy/mommy uwu";
-                    } else {
-                        yougot.innerHTML = "You got: Slut Gun Nut";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === true && o2.checked === false) {
-        if (o7.checked === false && o8.checked === true) {
-            if (o3.checked === true && o4.checked === false) {
-                if (o5.checked === false && o6.checked === true) {
-                    board.src = "board1.png";
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You like to program and your daddy/mommy uwu";
-                    } else {
-                        yougot.innerHTML = "You got: Slut Techie";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === true && o2.checked === false) {
-        if (o7.checked === true && o8.checked === false) {
-            if (o3.checked === true && o4.checked === false) {
-                if (o5.checked === false && o6.checked === true) {
-                    board.src = "board9.png";
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You like your daddy/mommy uwu";
-                    } else {
-                        yougot.innerHTML = "You got: Slut";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === false && o2.checked === true) {
-        if (o7.checked === true && o8.checked === false) {
-            if (o3.checked === true && o4.checked === false) {
-                if (o5.checked === true && o6.checked === false) {
-                    board.src = "board3.png";
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You like guns uwu";
-                    } else {
-                        yougot.innerHTML = "You got: Gun Nut";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === false && o2.checked === true) {
-        if (o7.checked === true && o8.checked === false) {
-            if (o3.checked === true && o4.checked === false) {
-                if (o5.checked === true && o6.checked === false) {
-                    board.src = "board3.png";
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You like guns uwu";
-                    } else {
-                        yougot.innerHTML = "You got: Gun Nut";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === false && o2.checked === true) {
-        if (o7.checked === false && o8.checked === true) {
-            if (o3.checked === true && o4.checked === false) {
-                if (o5.checked === false && o6.checked === true) {
-                    board.src = "board9.png";
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You like your daddy/mommy uwu";
-                    } else {
-                        yougot.innerHTML = "You got: Slut";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === false && o2.checked === true) {
-        if (o7.checked === false && o8.checked === true) {
-            if (o3.checked === false && o4.checked === true) {
-                if (o5.checked === true && o6.checked === false) {
-                    board.src = "board5.png";
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You like to >///<";
-                    } else {
-                        yougot.innerHTML = "You got: Prude";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === true && o2.checked === false) {
-        if (o7.checked === false && o8.checked === true) {
-            if (o3.checked === false && o4.checked === true) {
-                if (o5.checked === false && o6.checked === true) {
-                    board.src = "board7.png";
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You like to program uwu";
-                    } else {
-                        yougot.innerHTML = "You got: Techie";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === false && o2.checked === true) {
-        if (o7.checked === true && o8.checked === false) {
-            if (o3.checked === false && o4.checked === true) {
-                if (o5.checked === false && o6.checked === true) {
-                    board.src = "board3.png";
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You like guns uwu";
-                    } else {
-                        yougot.innerHTML = "You got: Gun Nut";
-                    }
-                }
-            }
-        }
-    }
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
     if (o7.checked === false && o8.checked === false) {
@@ -378,238 +153,267 @@ function UpdateRadio() {
         t3.innerHTML = "If someone was standing naked in front of you, would you be scared? (if you know the person, not some random person)";
         t4.innerHTML = "Do you currently own a firearm or do you want to own a firearm?";
     }
-    if (o1.checked === true && o2.checked === false) {
-        if (o7.checked === true && o8.checked === false) {
-            if (o3.checked === true && o4.checked === false) {
-                if (o5.checked === true && o6.checked === false) {
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You are pretty normal uwu";
-                    } else {
-                        yougot.innerHTML = "You got: Neutral";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === true && o2.checked === false) {
-        if (o7.checked === true && o8.checked === false) {
-            if (o3.checked === false && o4.checked === true) {
-                if (o5.checked === false && o6.checked === true) {
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You are pretty normal uwu";
-                    } else {
-                        yougot.innerHTML = "You got: Neutral";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === false && o2.checked === true) {
-        if (o7.checked === false && o8.checked === true) {
-            if (o3.checked === true && o4.checked === false) {
-                if (o5.checked === true && o6.checked === false) {
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You are pretty normal uwu";
-                    } else {
-                        yougot.innerHTML = "You got: Neutral";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === false && o2.checked === true) {
-        if (o7.checked === false && o8.checked === true) {
-            if (o3.checked === false && o4.checked === true) {
-                if (o5.checked === false && o6.checked === true) {
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You are pretty normal uwu";
-                    } else {
-                        yougot.innerHTML = "You got: Neutral";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === true && o2.checked === false) {
-        if (o7.checked === false && o8.checked === true) {
-            if (o3.checked === true && o4.checked === false) {
-                if (o5.checked === true && o6.checked === false) {
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You like to program uwu";
-                    } else {
-                        yougot.innerHTML = "You got: Techie";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === true && o2.checked === false) {
-        if (o7.checked === false && o8.checked === true) {
-            if (o3.checked === false && o4.checked === true) {
-                if (o5.checked === true && o6.checked === false) {
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You like to program and to >///<";
-                    } else {
-                        yougot.innerHTML = "You got: Prude Techie";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === true && o2.checked === false) {
-        if (o7.checked === true && o8.checked === false) {
-            if (o3.checked === false && o4.checked === true) {
-                if (o5.checked === true && o6.checked === false) {
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You like to >///<";
-                    } else {
-                        yougot.innerHTML = "You got: Prude Neutral";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === false && o2.checked === true) {
-        if (o7.checked === true && o8.checked === false) {
-            if (o3.checked === false && o4.checked === true) {
-                if (o5.checked === true && o6.checked === false) {
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You like guns and to >///<";
-                    } else {
-                        yougot.innerHTML = "You got: Prude Gun Nut";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === false && o2.checked === true) {
-        if (o7.checked === true && o8.checked === false) {
-            if (o3.checked === true && o4.checked === false) {
-                if (o5.checked === true && o6.checked === false) {
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You like guns uwu";
-                    } else {
-                        yougot.innerHTML = "You got: Gun Nut";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === false && o2.checked === true) {
-        if (o7.checked === true && o8.checked === false) {
-            if (o3.checked === true && o4.checked === false) {
-                if (o5.checked === false && o6.checked === true) {
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You like guns and daddy/mommy uwu";
-                    } else {
-                        yougot.innerHTML = "You got: Slut Gun Nut";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === true && o2.checked === false) {
-        if (o7.checked === false && o8.checked === true) {
-            if (o3.checked === true && o4.checked === false) {
-                if (o5.checked === false && o6.checked === true) {
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You like to program and your daddy/mommy uwu";
-                    } else {
-                        yougot.innerHTML = "You got: Slut Techie";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === true && o2.checked === false) {
-        if (o7.checked === true && o8.checked === false) {
-            if (o3.checked === true && o4.checked === false) {
-                if (o5.checked === false && o6.checked === true) {
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You like your daddy/mommy uwu";
-                    } else {
-                        yougot.innerHTML = "You got: Slut";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === false && o2.checked === true) {
-        if (o7.checked === true && o8.checked === false) {
-            if (o3.checked === true && o4.checked === false) {
-                if (o5.checked === true && o6.checked === false) {
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You like guns uwu";
-                    } else {
-                        yougot.innerHTML = "You got: Gun Nut";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === false && o2.checked === true) {
-        if (o7.checked === true && o8.checked === false) {
-            if (o3.checked === true && o4.checked === false) {
-                if (o5.checked === true && o6.checked === false) {
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You like guns uwu";
-                    } else {
-                        yougot.innerHTML = "You got: Gun Nut";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === false && o2.checked === true) {
-        if (o7.checked === false && o8.checked === true) {
-            if (o3.checked === true && o4.checked === false) {
-                if (o5.checked === false && o6.checked === true) {
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You like your daddy/mommy uwu";
-                    } else {
-                        yougot.innerHTML = "You got: Slut";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === false && o2.checked === true) {
-        if (o7.checked === false && o8.checked === true) {
-            if (o3.checked === false && o4.checked === true) {
-                if (o5.checked === true && o6.checked === false) {
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You like to >///<";
-                    } else {
-                        yougot.innerHTML = "You got: Prude";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === true && o2.checked === false) {
-        if (o7.checked === false && o8.checked === true) {
-            if (o3.checked === false && o4.checked === true) {
-                if (o5.checked === false && o6.checked === true) {
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You like to program uwu";
-                    } else {
-                        yougot.innerHTML = "You got: Techie";
-                    }
-                }
-            }
-        }
-    }
-    if (o1.checked === false && o2.checked === true) {
-        if (o7.checked === true && o8.checked === false) {
-            if (o3.checked === false && o4.checked === true) {
-                if (o5.checked === false && o6.checked === true) {
-                    if (uwumode.checked === true) {
-                        yougot.innerHTML = "You like guns uwu";
-                    } else {
-                        yougot.innerHTML = "You got: Gun Nut";
-                    }
-                }
-            }
-        }
-    }
+	var newText = GetTextFromInputs();
+	if(newText !== null) {
+		yougot.innerHTML = "You got: " + newText;
+	}
+	var checkedinputs = inputs.filter(x => IsChecked(x) === true);
+	if(checkedinputs == true) { //check if empty 
+		
+		var posx = checkedinputs.map(x => x.positionx).reduce((acc,input) => acc + input);
+		var posy = checkedinputs.map(x => x.positiony).reduce((acc,input) => acc + input);
+		
+		//reset the canvas
+		ctx.clearRect(0,0, canvas.width, canvas.height);
+		//draw background images
+		ctx.drawImage(img,0,0);
+		//by default, the coordinate (0,0) is the top left corner of the canvas
+		// translate changes the coordinate 0,0 to mean something else
+		// in this case 0,0 now corresponds to the middle of the canvas
+		ctx.translate((canvas.width/2),(canvas.height/2));
+		//this means that negative coordinates are left/up of the center
+		//i do this translation for convenience,
+		var offset = 10;
+		ctx.beginPath(); //declare you wanna start drawing
+		ctx.arc(posy * canvas.width / 3, posx * canvas.height / 3, 10, 0, 2 * Math.PI) //draws a full circle
+		ctx.fillStyle = "#FF0000"; //set the fill to red
+		ctx.fill(); //fill what you've drawn
+		ctx.stroke(); //outline what you've drawn
+		ctx.setTransform(1, 0, 0, 1, 0, 0); //reset the translation
+	}
+	
+    // if (o1.checked === true && o2.checked === false) {
+        // if (o7.checked === true && o8.checked === false) {
+            // if (o3.checked === true && o4.checked === false) {
+                // if (o5.checked === true && o6.checked === false) {
+                    // if (uwumode.checked === true) {
+                        // yougot.innerHTML = "You are pretty normal uwu";
+                    // } else {
+                        // yougot.innerHTML = "You got: Neutral";
+                    // }
+                // }
+            // }
+        // }
+    // }
+    // if (o1.checked === true && o2.checked === false) {
+        // if (o7.checked === true && o8.checked === false) {
+            // if (o3.checked === false && o4.checked === true) {
+                // if (o5.checked === false && o6.checked === true) {
+                    // if (uwumode.checked === true) {
+                        // yougot.innerHTML = "You are pretty normal uwu";
+                    // } else {
+                        // yougot.innerHTML = "You got: Neutral";
+                    // }
+                // }
+            // }
+        // }
+    // }
+    // if (o1.checked === false && o2.checked === true) {
+        // if (o7.checked === false && o8.checked === true) {
+            // if (o3.checked === true && o4.checked === false) {
+                // if (o5.checked === true && o6.checked === false) {
+                    // if (uwumode.checked === true) {
+                        // yougot.innerHTML = "You are pretty normal uwu";
+                    // } else {
+                        // yougot.innerHTML = "You got: Neutral";
+                    // }
+                // }
+            // }
+        // }
+    // }
+    // if (o1.checked === false && o2.checked === true) {
+        // if (o7.checked === false && o8.checked === true) {
+            // if (o3.checked === false && o4.checked === true) {
+                // if (o5.checked === false && o6.checked === true) {
+                    // if (uwumode.checked === true) {
+                        // yougot.innerHTML = "You are pretty normal uwu";
+                    // } else {
+                        // yougot.innerHTML = "You got: Neutral";
+                    // }
+                // }
+            // }
+        // }
+    // }
+    // if (o1.checked === true && o2.checked === false) {
+        // if (o7.checked === false && o8.checked === true) {
+            // if (o3.checked === true && o4.checked === false) {
+                // if (o5.checked === true && o6.checked === false) {
+                    // if (uwumode.checked === true) {
+                        // yougot.innerHTML = "You like to program uwu";
+                    // } else {
+                        // yougot.innerHTML = "You got: Techie";
+                    // }
+                // }
+            // }
+        // }
+    // }
+    // if (o1.checked === true && o2.checked === false) {
+        // if (o7.checked === false && o8.checked === true) {
+            // if (o3.checked === false && o4.checked === true) {
+                // if (o5.checked === true && o6.checked === false) {
+                    // if (uwumode.checked === true) {
+                        // yougot.innerHTML = "You like to program and to >///<";
+                    // } else {
+                        // yougot.innerHTML = "You got: Prude Techie";
+                    // }
+                // }
+            // }
+        // }
+    // }
+    // if (o1.checked === true && o2.checked === false) {
+        // if (o7.checked === true && o8.checked === false) {
+            // if (o3.checked === false && o4.checked === true) {
+                // if (o5.checked === true && o6.checked === false) {
+                    // if (uwumode.checked === true) {
+                        // yougot.innerHTML = "You like to >///<";
+                    // } else {
+                        // yougot.innerHTML = "You got: Prude Neutral";
+                    // }
+                // }
+            // }
+        // }
+    // }
+    // if (o1.checked === false && o2.checked === true) {
+        // if (o7.checked === true && o8.checked === false) {
+            // if (o3.checked === false && o4.checked === true) {
+                // if (o5.checked === true && o6.checked === false) {
+                    // if (uwumode.checked === true) {
+                        // yougot.innerHTML = "You like guns and to >///<";
+                    // } else {
+                        // yougot.innerHTML = "You got: Prude Gun Nut";
+                    // }
+                // }
+            // }
+        // }
+    // }
+    // if (o1.checked === false && o2.checked === true) {
+        // if (o7.checked === true && o8.checked === false) {
+            // if (o3.checked === true && o4.checked === false) {
+                // if (o5.checked === true && o6.checked === false) {
+                    // if (uwumode.checked === true) {
+                        // yougot.innerHTML = "You like guns uwu";
+                    // } else {
+                        // yougot.innerHTML = "You got: Gun Nut";
+                    // }
+                // }
+            // }
+        // }
+    // }
+    // if (o1.checked === false && o2.checked === true) {
+        // if (o7.checked === true && o8.checked === false) {
+            // if (o3.checked === true && o4.checked === false) {
+                // if (o5.checked === false && o6.checked === true) {
+                    // if (uwumode.checked === true) {
+                        // yougot.innerHTML = "You like guns and daddy/mommy uwu";
+                    // } else {
+                        // yougot.innerHTML = "You got: Slut Gun Nut";
+                    // }
+                // }
+            // }
+        // }
+    // }
+    // if (o1.checked === true && o2.checked === false) {
+        // if (o7.checked === false && o8.checked === true) {
+            // if (o3.checked === true && o4.checked === false) {
+                // if (o5.checked === false && o6.checked === true) {
+                    // if (uwumode.checked === true) {
+                        // yougot.innerHTML = "You like to program and your daddy/mommy uwu";
+                    // } else {
+                        // yougot.innerHTML = "You got: Slut Techie";
+                    // }
+                // }
+            // }
+        // }
+    // }
+    // if (o1.checked === true && o2.checked === false) {
+        // if (o7.checked === true && o8.checked === false) {
+            // if (o3.checked === true && o4.checked === false) {
+                // if (o5.checked === false && o6.checked === true) {
+                    // if (uwumode.checked === true) {
+                        // yougot.innerHTML = "You like your daddy/mommy uwu";
+                    // } else {
+                        // yougot.innerHTML = "You got: Slut";
+                    // }
+                // }
+            // }
+        // }
+    // }
+    // if (o1.checked === false && o2.checked === true) {
+        // if (o7.checked === true && o8.checked === false) {
+            // if (o3.checked === true && o4.checked === false) {
+                // if (o5.checked === true && o6.checked === false) {
+                    // if (uwumode.checked === true) {
+                        // yougot.innerHTML = "You like guns uwu";
+                    // } else {
+                        // yougot.innerHTML = "You got: Gun Nut";
+                    // }
+                // }
+            // }
+        // }
+    // }
+    // if (o1.checked === false && o2.checked === true) {
+        // if (o7.checked === true && o8.checked === false) {
+            // if (o3.checked === true && o4.checked === false) {
+                // if (o5.checked === true && o6.checked === false) {
+                    // if (uwumode.checked === true) {
+                        // yougot.innerHTML = "You like guns uwu";
+                    // } else {
+                        // yougot.innerHTML = "You got: Gun Nut";
+                    // }
+                // }
+            // }
+        // }
+    // }
+    // if (o1.checked === false && o2.checked === true) {
+        // if (o7.checked === false && o8.checked === true) {
+            // if (o3.checked === true && o4.checked === false) {
+                // if (o5.checked === false && o6.checked === true) {
+                    // if (uwumode.checked === true) {
+                        // yougot.innerHTML = "You like your daddy/mommy uwu";
+                    // } else {
+                        // yougot.innerHTML = "You got: Slut";
+                    // }
+                // }
+            // }
+        // }
+    // }
+    // if (o1.checked === false && o2.checked === true) {
+        // if (o7.checked === false && o8.checked === true) {
+            // if (o3.checked === false && o4.checked === true) {
+                // if (o5.checked === true && o6.checked === false) {
+                    // if (uwumode.checked === true) {
+                        // yougot.innerHTML = "You like to >///<";
+                    // } else {
+                        // yougot.innerHTML = "You got: Prude";
+                    // }
+                // }
+            // }
+        // }
+    // }
+    // if (o1.checked === true && o2.checked === false) {
+        // if (o7.checked === false && o8.checked === true) {
+            // if (o3.checked === false && o4.checked === true) {
+                // if (o5.checked === false && o6.checked === true) {
+                    // if (uwumode.checked === true) {
+                        // yougot.innerHTML = "You like to program uwu";
+                    // } else {
+                        // yougot.innerHTML = "You got: Techie";
+                    // }
+                // }
+            // }
+        // }
+    // }
+    // if (o1.checked === false && o2.checked === true) {
+        // if (o7.checked === true && o8.checked === false) {
+            // if (o3.checked === false && o4.checked === true) {
+                // if (o5.checked === false && o6.checked === true) {
+                    // if (uwumode.checked === true) {
+                        // yougot.innerHTML = "You like guns uwu";
+                    // } else {
+                        // yougot.innerHTML = "You got: Gun Nut";
+                    // }
+                // }
+            // }
+        // }
+    // }
 }
