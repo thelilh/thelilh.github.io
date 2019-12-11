@@ -35,13 +35,29 @@ function GetTextFromInputs() {
 
 function UpdateImage() {
     'use strict';
-    var uwumode, t1, t2, t3, t4, yougot;
+    var yougot, o1, o2, o3, o4, o5, o6, o7, o8, l1, l2, l3, l4, l5, l6, l7, l8, uwumode, board, t1, t2, t3, t4;
     uwumode = document.getElementById("uwumode");
     t1 = document.getElementById("title1");
     t2 = document.getElementById("title2");
     t3 = document.getElementById("title3");
     t4 = document.getElementById("title4");
-    yougot = document.getElementById("yougot");   
+    o1 = document.getElementById("po1");
+    o2 = document.getElementById("po2");
+    o3 = document.getElementById("mo1");
+    o4 = document.getElementById("mo2");
+    o5 = document.getElementById("no1");
+    o6 = document.getElementById("no2");
+    o7 = document.getElementById("go1");
+    o8 = document.getElementById("go2");
+    l1 = document.getElementById("l1");
+    l2 = document.getElementById("l2");
+    l3 = document.getElementById("l3");
+    l4 = document.getElementById("l4");
+    l5 = document.getElementById("l5");
+    l6 = document.getElementById("l6");
+    l7 = document.getElementById("l7");
+    l8 = document.getElementById("l8");
+    yougot = document.getElementById("yougot");
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
     if (o7.checked === false && o8.checked === false) {
@@ -155,7 +171,7 @@ function UpdateRadio() {
 		yougot.innerHTML = "You got: " + newText;
 	}
 	var checkedinputs = inputs.filter(x => IsChecked(x) === true);
-	if(checkedinputs == true) { //check if empty 
+	if(checkedinputs != false) { //check if empty 
 		
 		var posx = checkedinputs.map(x => x.positionx).reduce((acc,input) => acc + input);
 		var posy = checkedinputs.map(x => x.positiony).reduce((acc,input) => acc + input);
