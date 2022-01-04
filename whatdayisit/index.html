@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>What day is it today?</title>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<h1><br><br></h1>
+		<h1 id="today">Today is</h1>
+		<h1 id="theDay">Test</h1>
+		<h1 id="theDate"></h1>
+		<script type="text/javascript">
+			Date.prototype.getWeek = function (dowOffset) {
+			/*getWeek() was developed by Nick Baicoianu at MeanFreePath: http://www.meanfreepath.com */
+
+			    dowOffset = typeof(dowOffset) == 'int' ? dowOffset : 0; //default dowOffset to zero
+			    var newYear = new Date(this.getFullYear(),0,1);
+			    var day = newYear.getDay() - dowOffset; //the day of week the year begins on
+			    day = (day >= 0 ? day : day + 7);
+			    var daynum = Math.floor((this.getTime() - newYear.getTime() - 
+			    (this.getTimezoneOffset()-newYear.getTimezoneOffset())*60000)/86400000) + 1;
+			    var weeknum;
+			    //if the year starts before the middle of a week
+			    if(day < 4) {
+			        weeknum = Math.floor((daynum+day-1)/7) + 1;
+			        if(weeknum > 52) {
+			            nYear = new Date(this.getFullYear() + 1,0,1);
+			            nday = nYear.getDay() - dowOffset;
+			            nday = nday >= 0 ? nday : nday + 7;
+			            /*if the next year starts before the middle of
+			              the week, it is week #1 of that year*/
+			            weeknum = nday < 4 ? 1 : 53;
+			        }
+			    }
+			    else {
+			        weeknum = Math.floor((daynum+day-1)/7);
+			    }
+			    return weeknum;
+			};
+			var d = new Date();
+			let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+			var n = days[d.getDay()];
+			var dd = String(d.getDate()).padStart(2, '0');
+			var mm = String(d.getMonth() + 1).padStart(2, '0'); //January is 0!
+			var yyyy = d.getFullYear();
+
+			var today = mm + '/' + dd + '/' + yyyy;
+			today = today + " (Week " + d.getWeek() + ")";
+			y = 0
+			yy = 0
+			console.log("bruh")
+			function pollDOM () {
+			 	var el = document.getElementById('theDay');
+			 	var td = document.getElementById('theDate');
+				oo = (1.0/(25-y))
+				td.innerHTML = today;
+				el.innerHTML = days[yy]
+				y+=1
+				if (yy<6) {
+					yy+=1
+				} else {
+					yy=0
+				}
+				if (y < 25) {
+					setTimeout(pollDOM, 50); // try again in 300 milliseconds
+				} else {
+					el.innerHTML = n;
+				}
+			}
+			pollDOM()
+		</script>
+	</body>
+</html>

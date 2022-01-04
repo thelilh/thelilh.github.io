@@ -9,79 +9,21 @@ body {
   margin: 0;
   font-family: "Raleway", sans-serif;
   text-align: center;
-  background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Transgender_Pride_flag.svg/1280px-Transgender_Pride_flag.svg.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   height: 100vh;
-  padding: 1em 0;
 }
 
 h1 {
-    font-size: 2em;
+    font-size: 7em;
 }
-
 a {
-    text-decoration: none;
+    font-size: 3em;
     color: black;
-}
-
-@media (min-width: 40rem) {
-    body {
-        padding: 3em 0;
-    }
-    h1 {
-        font-size: 3em;
-    }
-}
-
-@media (min-width: 60rem) {
-    .btn {
-        width: 50vw;
-    }
-}
-
-
-/* Styles
-**********************************/
-.nolist {
-    list-style: none;
-}
-.nolist li {
-    margin-bottom: 1em;
-    margin-left: -1em;
-}
-/* Buttons
-**********************************/
-.btn {
-    display: inline-block;
-    font-size: 1.15rem;
     text-decoration: none;
-    text-transform: uppercase;
-    border-width: 2px;
-    border-style: solid;
-    border-color: #000;
-    padding: 0.5em 1.75em;
-    width: 70vw;
-    color: #000;
-    background: #fff;
-    border-radius: 1em;
 }
-.btn:hover {
-    color: #fff;
-    background: #000;
-}
-
-@media (min-width: 40rem) {
-    .btn {
-        width: 70vw;
-        font-size: 2em;
-    }
-}
-
-@media (min-width: 60rem) {
-    .btn {
-        width: 50vw;
-        font-size: 2em;
-    }
+a:hover {
+    text-decoration: underline;
+    font-weight: bold;
 }
