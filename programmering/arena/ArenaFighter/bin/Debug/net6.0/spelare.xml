@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Character xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Arena">
+	<befinnande>81</befinnande>
+	<benskydd>0</benskydd>
+	<brostplat>0</brostplat>
+	<dead>false</dead>
+	<fart>29</fart>
+	<namn>Bertil VI</namn>
+	<pengar>118</pengar>
+	<styrka>1</styrka>
+	<svard>1</svard>
+	<typ>0</typ>
+</Character>

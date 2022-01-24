@@ -100,8 +100,8 @@ namespace Arena
 
                     //Spelaren ges gratismedelande
                     Console.WriteLine(String.Format("Grattis, du döda {0}", offer.namn));
-                    spelet.LoggaDetta(String.Format("Spelaren dödade {0}, som hade på sig {1} pengar. Spelarens pengar är nu {2}.", offer.namn, offer.pengar, this.namn));
-                    Console.WriteLine(String.Format("Du hittade {0} pengar på {1}. Du har nu {2} pengar", offer.pengar, offer.namn, this.pengar));
+                    spelet.LoggaDetta(String.Format("Spelaren dödade {0}, som hade på sig {1} pengar. Spelarens pengar är nu {2}.", offer.namn, offer.pengar, this.pengar));
+                    Console.WriteLine(String.Format("Du hittade {0} pengar på {1}. Du har nu {2} pengar.", offer.pengar, offer.namn, this.pengar));
 
                     //Max och Min Hälsa ökas med 10 HP
                     spelet.minbefinnande += 10;
@@ -405,11 +405,12 @@ namespace Arena
                         switch (Console.ReadLine())
                         {
                             case "1":
-                                if (spelare.pengar == spelet.kostnadSvard) {
+                                if (spelare.pengar >= spelet.kostnadSvard) {
                                     spelare.svard += 1;
                                     spelare.pengar -= spelet.kostnadSvard;
                                     spelet.kostnadSvard *= 2;
                                     Console.WriteLine(String.Format("Du har uppgraderat dit svärd till level {0}!\nNästa gång du handlar ett svärd kommer det kosta {1}.", spelare.svard, spelet.kostnadSvard));
+                                    spelet.LoggaDetta(String.Format("Spelaren har nu svärd level {0} och {1} pengar", spelare.brostplat, spelare.pengar));
                                     SaveGame(spelet, spelare, motstandare);
                                 }
                                 else
@@ -418,7 +419,7 @@ namespace Arena
                                 }
                                 break;
                             case "2":
-                                if (spelare.pengar == spelet.kostnadBrostplat)
+                                if (spelare.pengar >= spelet.kostnadBrostplat)
                                 {
                                     spelare.brostplat += 1;
                                     spelare.pengar -= spelet.kostnadBrostplat;
@@ -430,6 +431,7 @@ namespace Arena
                                     {
                                         Console.WriteLine(String.Format("Du har köpt en bröstplåt!\nNästa gång du handlar en bröstplåt kommer det kosta {0}.", spelet.kostnadBrostplat));
                                     }
+                                    spelet.LoggaDetta(String.Format("Spelaren har nu bröstplåt level {0} och {1} pengar", spelare.brostplat, spelare.pengar));
                                     SaveGame(spelet, spelare, motstandare);
                                 }
                                 else
@@ -444,7 +446,7 @@ namespace Arena
                                 }
                                 break;
                             case "3":
-                                if (spelare.pengar == spelet.kostnadBenskydd)
+                                if (spelare.pengar >= spelet.kostnadBenskydd)
                                 {
                                     spelare.benskydd += 1;
                                     spelare.pengar -= spelet.kostnadBenskydd;
@@ -457,6 +459,7 @@ namespace Arena
                                     {
                                         Console.WriteLine(String.Format("Du har köpt ett benskydd!\nNästa gång du handlar ett benskydd kommer det kosta {0}.", spelet.kostnadBenskydd));
                                     }
+                                    spelet.LoggaDetta(String.Format("Spelaren har nu benskydd level {0} och {1} pengar", spelare.benskydd, spelare.pengar));
                                     SaveGame(spelet, spelare, motstandare);
                                 }
                                 else
