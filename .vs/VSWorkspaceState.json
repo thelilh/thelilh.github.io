@@ -3,8 +3,12 @@
     "",
     "\\CV",
     "\\CV\\EN",
-    "\\CV\\SV"
+    "\\CV\\SV",
+    "\\programmering",
+    "\\programmering\\arena",
+    "\\programmering\\arena\\ArenaFighter",
+    "\\programmering\\arena\\ArenaFighter\\obj"
   ],
-  "SelectedNode": "\\CV\\EN\\index.html",
+  "SelectedNode": "\\programmering\\arena\\ArenaFighter\\ArenaFighter.csproj",
   "PreviewInSolutionExplorer": false
 }
