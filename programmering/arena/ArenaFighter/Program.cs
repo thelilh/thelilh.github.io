@@ -302,17 +302,24 @@ namespace Arena
                 // Skapa spelet
                 spelet = new Game(30, 71, 1, 11, 1, "Startet av spelet");
 
-                // Skapa spelaren
+                // Viktiga variabler
                 Random rand = new Random();
                 int sbefinnande = rand.Next(30, 101); //Hälsa, mellan 30 och 100.
+
+                //Fråga spelaren
                 Console.WriteLine("Vad heter din spelare?");
+
+                //Skapa spelaren
                 spelare = new Character(Console.ReadLine(), sbefinnande, 0, false, 1, rand.Next(1, 51), 0, 0); //Skapa Spelaren
+
+                //Rulla tärningen
                 Console.WriteLine("Du kastar en tärning");
                 spelare.styrka = spelare.RullaTarningen();
+
+                //Spara spelaren och ladda in
                 SaveViaDataContractSerialization(spelare, "spelare.xml");   //Spara Spelaren
                 spelare = null; //Spelaren "tas bort"
                 spelare = LoadViaDataContractSerialization<Character>("spelare.xml"); //Ladda in spelare.
-                Console.WriteLine(spelare.ToString()); //Visa spelaren
                 
                 //Skapa Motståndaren
                 motstandare = CharacterCreation(spelet);
