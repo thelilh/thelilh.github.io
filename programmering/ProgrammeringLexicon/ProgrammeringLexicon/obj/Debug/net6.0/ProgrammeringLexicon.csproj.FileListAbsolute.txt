@@ -1,0 +1,15 @@
+H:\GitLab\lexicron\testochbedomning\ProgrammeringLexicon\ProgrammeringLexicon\obj\Debug\net6.0\ProgrammeringLexicon.csproj.AssemblyReference.cache
+H:\GitLab\lexicron\testochbedomning\ProgrammeringLexicon\ProgrammeringLexicon\obj\Debug\net6.0\ProgrammeringLexicon.GeneratedMSBuildEditorConfig.editorconfig
+H:\GitLab\lexicron\testochbedomning\ProgrammeringLexicon\ProgrammeringLexicon\obj\Debug\net6.0\ProgrammeringLexicon.AssemblyInfoInputs.cache
+H:\GitLab\lexicron\testochbedomning\ProgrammeringLexicon\ProgrammeringLexicon\obj\Debug\net6.0\ProgrammeringLexicon.AssemblyInfo.cs
+H:\GitLab\lexicron\testochbedomning\ProgrammeringLexicon\ProgrammeringLexicon\obj\Debug\net6.0\ProgrammeringLexicon.csproj.CoreCompileInputs.cache
+H:\GitLab\lexicron\testochbedomning\ProgrammeringLexicon\ProgrammeringLexicon\bin\Debug\net6.0\ProgrammeringLexicon.exe
+H:\GitLab\lexicron\testochbedomning\ProgrammeringLexicon\ProgrammeringLexicon\bin\Debug\net6.0\ProgrammeringLexicon.deps.json
+H:\GitLab\lexicron\testochbedomning\ProgrammeringLexicon\ProgrammeringLexicon\bin\Debug\net6.0\ProgrammeringLexicon.runtimeconfig.json
+H:\GitLab\lexicron\testochbedomning\ProgrammeringLexicon\ProgrammeringLexicon\bin\Debug\net6.0\ProgrammeringLexicon.dll
+H:\GitLab\lexicron\testochbedomning\ProgrammeringLexicon\ProgrammeringLexicon\bin\Debug\net6.0\ref\ProgrammeringLexicon.dll
+H:\GitLab\lexicron\testochbedomning\ProgrammeringLexicon\ProgrammeringLexicon\bin\Debug\net6.0\ProgrammeringLexicon.pdb
+H:\GitLab\lexicron\testochbedomning\ProgrammeringLexicon\ProgrammeringLexicon\obj\Debug\net6.0\ProgrammeringLexicon.dll
+H:\GitLab\lexicron\testochbedomning\ProgrammeringLexicon\ProgrammeringLexicon\obj\Debug\net6.0\ref\ProgrammeringLexicon.dll
+H:\GitLab\lexicron\testochbedomning\ProgrammeringLexicon\ProgrammeringLexicon\obj\Debug\net6.0\ProgrammeringLexicon.pdb
+H:\GitLab\lexicron\testochbedomning\ProgrammeringLexicon\ProgrammeringLexicon\obj\Debug\net6.0\ProgrammeringLexicon.genruntimeconfig.cache

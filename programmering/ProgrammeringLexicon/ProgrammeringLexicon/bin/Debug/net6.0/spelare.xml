@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Spelare xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Lexicon">
+	<health>59</health>
+	<luck>20</luck>
+	<namn>Mike</namn>
+	<strength>19</strength>
+</Spelare>
