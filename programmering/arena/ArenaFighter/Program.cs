@@ -180,52 +180,111 @@ namespace Arena
 
         static void Runda(Character spelare, Character motstandare, Game spelet)
         {
+            //Rensa skärmen
             Console.Clear();
+
+            //Logga rundan
             spelet.LoggaDetta(String.Format("Runda {0}", spelet.rundorAvklarade));
-            int playerMaxbefinnande = spelare.befinnande;
+
+            //Temporära varaiblar
+            int spelareMaxbefinnande = spelare.befinnande;
+            int mMaxbefinnande = motstandare.befinnande;
             bool avslutarSpelet = false;
+
+            //Skriv ut vem spelaren möter
             Console.WriteLine(String.Format("{0} möter {1}. Du har en hälsa av {2} och en styrka på {3}, motståndaren har en hälsa på {4}.", spelare.namn, motstandare.namn, spelare.befinnande, spelare.styrka, motstandare.befinnande));
+            if (spelare.fart > motstandare.fart)
+            {
+                Console.WriteLine("Du är snabbare än din motståndare");
+            }
+            else
+            {
+                Console.WriteLine("Du är långsammare än din motståndare");
+            }
             Console.WriteLine("Klicka enter för att fortsätta...");
             Console.ReadLine();
+
+            //Börjar while-loopen, se till att den bara följs så länge både spelaren inte är död, motståndaren inte är död och spelaren inte valt att avsluta spelet.
             while (!spelare.dead && !motstandare.dead && !avslutarSpelet)
             {
                 Console.Clear();
-                Console.WriteLine(String.Format("Din hälsa: {0}", spelare.befinnande));
-                Console.WriteLine(String.Format("{0}s hälsa: {1}", motstandare.namn, motstandare.befinnande));
+                Console.WriteLine(String.Format("Din hälsa: {0}/{1}", spelare.befinnande, spelareMaxbefinnande));
+                Console.WriteLine(String.Format("{0}s hälsa: {1}/{2}", motstandare.namn, motstandare.befinnande, mMaxbefinnande));
 
-                
-                Console.WriteLine("1) Attakera");
-                Console.WriteLine("2) Ge upp");
-                Console.WriteLine("3) Avsluta och spara");
-                Console.Write("\r\nVad vill du göra? ");
-                switch (Console.ReadLine())
-                {
-                    case "1":
-                        //Motståndaren tar skada
-                        spelare.Attakera(motstandare, spelet);
-                        break;
-                    case "2":
-                        //Spelaren ger upp
-                        spelare.Attakera(spelare, spelet);
-                        avslutarSpelet = true;
-                        break;
-                    case "3":
-                        //Spelaren avslutar och sparar
-                        Console.WriteLine(String.Format("Det verkar som att {0} vill ta en paus. Än så länge har {0} klarat sig i {1} rundor.", spelare.namn, spelet.rundorAvklarade));
-                        spelet.LoggaDetta(String.Format("Spelet avslutades vid runda {0} av spelaren.", spelet.rundorAvklarade));
-                        avslutarSpelet = true;
-                        SaveGame(spelet, spelare, motstandare);
-                        break;
-                    default:
-                        //Motståndaren tar skada
-                        spelare.Attakera(motstandare, spelet);
-                        break;
-                }
-                if (!avslutarSpelet)
-                {
-                    if (motstandare.befinnande > 0)
+                //Är spelare snabbare än motståndare eller lika snabb som motståndare, så går spelaren först
+                if (spelare.fart>motstandare.fart || spelare.fart==motstandare.fart) { 
+                    Console.WriteLine("1) Attakera");
+                    Console.WriteLine("2) Ge upp");
+                    Console.WriteLine("3) Avsluta och spara");
+                    Console.Write("\r\nVad vill du göra? ");
+                    switch (Console.ReadLine())
                     {
-                        motstandare.Attakera(spelare, spelet);
+                        case "1":
+                            //Motståndaren tar skada
+                            spelare.Attakera(motstandare, spelet);
+                            break;
+                        case "2":
+                            //Spelaren ger upp
+                            spelare.Attakera(spelare, spelet);
+                            avslutarSpelet = true;
+                            break;
+                        case "3":
+                            //Spelaren avslutar och sparar
+                            Console.WriteLine(String.Format("Det verkar som att {0} vill ta en paus. Än så länge har {0} klarat sig i {1} rundor.", spelare.namn, spelet.rundorAvklarade));
+                            spelet.LoggaDetta(String.Format("Spelet avslutades vid runda {0} av spelaren.", spelet.rundorAvklarade));
+                            avslutarSpelet = true;
+                            SaveGame(spelet, spelare, motstandare);
+                            break;
+                        default:
+                            //Motståndaren tar skada
+                            spelare.Attakera(motstandare, spelet);
+                            break;
+                    }
+                    if (!avslutarSpelet)
+                    {
+                        if (motstandare.befinnande > 0)
+                        {
+                            motstandare.Attakera(spelare, spelet);
+                        }
+                    }
+                }
+                //Om motståndaren är snabbare än spelare, så går motståndaren först
+                else
+                {
+                    if (!avslutarSpelet)
+                    {
+                        if (motstandare.befinnande > 0)
+                        {
+                            motstandare.Attakera(spelare, spelet); //Attakera spelaren
+                        }
+                    }
+                    Console.WriteLine("1) Attakera");
+                    Console.WriteLine("2) Ge upp");
+                    Console.WriteLine("3) Avsluta och spara");
+                    Console.Write("\r\nVad vill du göra? ");
+                    switch (Console.ReadLine())
+                    {
+                        case "1":
+                            //Motståndaren tar skada
+                            spelare.Attakera(motstandare, spelet);
+                            break;
+                        case "2":
+                            //Spelaren ger upp
+                            spelare.Attakera(spelare, spelet);
+                            spelare.dead = true;
+                            avslutarSpelet = true;
+                            break;
+                        case "3":
+                            //Spelaren avslutar och sparar
+                            Console.WriteLine(String.Format("Det verkar som att {0} vill ta en paus. Än så länge har {0} klarat sig i {1} rundor.", spelare.namn, spelet.rundorAvklarade));
+                            spelet.LoggaDetta(String.Format("Spelet avslutades vid runda {0} av spelaren.", spelet.rundorAvklarade));
+                            avslutarSpelet = true;
+                            SaveGame(spelet, spelare, motstandare);
+                            break;
+                        default:
+                            //Motståndaren tar skada
+                            spelare.Attakera(motstandare, spelet);
+                            break;
                     }
                 }
                 Console.WriteLine("Klicka enter för att fortsätta...");
@@ -234,7 +293,7 @@ namespace Arena
             if (!spelare.dead && motstandare.dead && !avslutarSpelet)
             {
                 //Spelarens hälsa återställs 
-                spelare.befinnande = playerMaxbefinnande;
+                spelare.befinnande = spelareMaxbefinnande;
 
                 //Spelaren ges gratismedelande
                 Console.WriteLine(String.Format("Grattis, du döda {0}", motstandare.namn));
@@ -280,23 +339,18 @@ namespace Arena
         }
         static Game LoadGame()
         {
-            if (File.Exists("spelet.xml"))
-            {
-                Console.WriteLine("Laddar in spelet");
-                return LoadViaDataContractSerialization<Game>("spelet.xml"); //Ladda in Spelet.
-            }
-            else
-            {
-                Console.WriteLine("Kan inte hitta något sparat spel!");
-                return null;
-            }
+            Console.WriteLine("Laddar in spelet");
+            return LoadViaDataContractSerialization<Game>("spelet.xml"); //Ladda in Spelet.
         }
 
         static void Main()
         {
+            //Variabler
             Character spelare;
             Game spelet;
             Character motstandare;
+
+            //Finns ens spelet?
             if (!File.Exists("spelet.xml"))
             {
                 // Skapa spelet
@@ -329,8 +383,11 @@ namespace Arena
             }
             else
             {
+                //Spelet finns, ladda in spelet
                 spelet = LoadGame();
                 spelet.LoggaDetta("Laddade in spelet");
+
+                //Ladda in spelare
                 spelare = LoadViaDataContractSerialization<Character>("spelare.xml"); //Ladda in spelare.
                 if (spelare.dead == null)
                 {
@@ -351,6 +408,7 @@ namespace Arena
                 motstandare = null; //Spelaren "tas bort"
                 motstandare = LoadViaDataContractSerialization<Character>("motstandare.xml"); //Ladda in spelare.
             }
+            //Starta rundan
             Runda(spelare, motstandare, spelet);
         }
     }
