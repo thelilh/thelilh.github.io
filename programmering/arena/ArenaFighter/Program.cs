@@ -17,34 +17,50 @@ namespace Arena
         public string namn; //Namn!
 
         [DataMember]
-        public int health; //Hälsa!
+        public int befinnande; //Hälsa!
 
         [DataMember]
-        public int strength; //Styrka!
+        public int styrka; //Styrka!
 
         [DataMember]
-        public bool isDead; //Är spelaren död?
+        public int svard; //Svärd!
 
-        public Character(string namn, int health, int strength, bool isDead)
+        [DataMember]
+        public int fart; //Fart!
+
+        [DataMember]
+        public int brostplat; //Bröstplåt!
+
+        [DataMember]
+        public int benskydd; //Benskydd!
+
+        [DataMember]
+        public bool dead; //Är spelaren död?
+
+        public Character(string namn, int befinnande, int styrka, bool dead, int svard, int fart, int brostplat, int benskydd)
         {
             this.namn = namn;
-            this.health = health;
-            this.strength = strength;
-            this.isDead = isDead;
+            this.befinnande = befinnande;
+            this.styrka = styrka;
+            this.dead = dead;
+            this.svard = svard;
+            this.fart = fart;
+            this.brostplat = brostplat;
+            this.benskydd = benskydd;
         }
         public override string ToString()
         {
-            string returnString = namn + " har en hälsa av " + health + ", en styrka på " + strength;
+            string returnString = namn + " har en hälsa av " + befinnande + ", en styrka på " + styrka;
             return returnString;
         }
-        public int TakeDmg(int dmg)
+        public int TaSkada(int dmg)
         {
-            int temp = this.health - dmg;
+            int temp = this.befinnande - dmg;
             return temp;
         }
         public bool CheckIfDead()
         {
-            if (this.health <= 0)
+            if (this.befinnande <= 0)
             {
                 return true;
             }
@@ -53,26 +69,37 @@ namespace Arena
                 return false;
             }
         }
-        public int RollTheDice()
+        public int RullaTarningen()
         {
-            Random random = new Random();
-            return random.Next(1, 7); //Mellan 1 och 6.
+            Random slump = new Random();
+            return slump.Next(1, 7); //Mellan 1 och 6.
+        }
+        public void Attakera(Character offer, Game spelet)
+        {
+            offer.befinnande = offer.TaSkada(this.styrka);
+            Console.WriteLine(String.Format("{0} slog {2}. {2} tog {1} skada.", this.namn, this.styrka, offer.namn));
+            spelet.LoggaDetta(String.Format("{2} skades av {0} ({1} skada).", this.namn, this.styrka, offer.namn));
+
+            if (offer.befinnande < 0)
+            {
+                offer.dead = true;
+            }
         }
     }
     [DataContract]
     public class Game
     {
         [DataMember]
-        public int minhealth;
+        public int minbefinnande;
 
         [DataMember]
-        public int maxhealth;
+        public int maxbefinnande;
 
         [DataMember]
-        public int minstrength;
+        public int minstyrka;
 
         [DataMember]
-        public int maxstrength;
+        public int maxstyrka;
 
         [DataMember]
         public int rundorAvklarade;
@@ -80,18 +107,19 @@ namespace Arena
         [DataMember]
         public List<string> log = new List<string>();
 
-        public Game(int minhealth, int maxhealth, int minstrength, int maxstrength, int rundorAvklarade, string text)
+        public Game(int minbefinnande, int maxbefinnande, int minstyrka, int maxstyrka, int rundorAvklarade, string text)
         {
-            this.minhealth = minhealth;
-            this.maxhealth = maxhealth;
-            this.minstrength = minstrength;
-            this.maxstrength = maxstrength;
+            this.minbefinnande = minbefinnande;
+            this.maxbefinnande = maxbefinnande;
+            this.minstyrka = minstyrka;
+            this.maxstyrka = maxstyrka;
             this.rundorAvklarade = rundorAvklarade;
             this.log.Add(text);
         }
 
-        public void LogThisForMe(string text)
+        public void LoggaDetta(string text)
         {
+            //Ifall texten ej är null, lägg till den.
             if (text != null)
             {
                 this.log.Add(text);
@@ -130,92 +158,124 @@ namespace Arena
             //TODO: lägg till flera namn, spelare kanske är för bra!
             string[] namn = new string[] { "Sofia Björn", "Clidna Annemarie", "Timo Thorne", "Merrill Latasha", "Jarka Iona", "Liis Rafaela", "Floella Halinka", "Elva Lamya", "Britta Conchobhar", "Alana Ellie", "Magni Tonya" };
             Random rand = new Random();
-            int sHealth = rand.Next(spelet.minhealth, spelet.maxhealth); //Hälsa, mellan 1 och 100.
+
+            //Hälsa, mellan 1 och 100.
+            int sbefinnande = rand.Next(spelet.minbefinnande, spelet.maxbefinnande);
+
+            //Ge motståndaren ett namn
             int rNamn = rand.Next(1, namn.Length);
-            Character motstandare = new Character(namn[rNamn], sHealth, 0, false); //Skapa Motståndaren
-            motstandare.strength = motstandare.RollTheDice();
+
+            //Skapa Motståndaren
+            Character motstandare = new Character(namn[rNamn], sbefinnande, 0, false, 1, rand.Next(1, 51), 0, 0); 
+
+            //Modifiera styrkan
+            motstandare.styrka = motstandare.RullaTarningen();
+
+            //Spara motståndaren
             SaveViaDataContractSerialization(motstandare, "motstandare.xml");   //Spara Motståndaren
+
+            //Ge tillbaka motståndaren till spelet
             return motstandare;
         }
 
-        static void BattleMode(Character spelare, Character motstandare, Game spelet)
+        static void Runda(Character spelare, Character motstandare, Game spelet)
         {
-            spelet.LogThisForMe(String.Format("Runda {0}", spelet.rundorAvklarade));
-            int playerMaxHealth = spelare.health;
+            Console.Clear();
+            spelet.LoggaDetta(String.Format("Runda {0}", spelet.rundorAvklarade));
+            int playerMaxbefinnande = spelare.befinnande;
             bool avslutarSpelet = false;
-            Console.WriteLine(String.Format("{0} möter {1}. Du har en hälsa av {2} och en styrka på {3}, motståndaren har en hälsa på {4}.", spelare.namn, motstandare.namn, spelare.health, spelare.strength, motstandare.health));
-            while (!spelare.isDead && !motstandare.isDead && !avslutarSpelet)
+            Console.WriteLine(String.Format("{0} möter {1}. Du har en hälsa av {2} och en styrka på {3}, motståndaren har en hälsa på {4}.", spelare.namn, motstandare.namn, spelare.befinnande, spelare.styrka, motstandare.befinnande));
+            Console.WriteLine("Klicka enter för att fortsätta...");
+            Console.ReadLine();
+            while (!spelare.dead && !motstandare.dead && !avslutarSpelet)
             {
-                Console.WriteLine(String.Format("Din hälsa: {0}", spelare.health));
-                Console.WriteLine(String.Format("{0}s hälsa: {1}", motstandare.namn, motstandare.health));
+                Console.Clear();
+                Console.WriteLine(String.Format("Din hälsa: {0}", spelare.befinnande));
+                Console.WriteLine(String.Format("{0}s hälsa: {1}", motstandare.namn, motstandare.befinnande));
+
+                
                 Console.WriteLine("1) Attakera");
                 Console.WriteLine("2) Ge upp");
                 Console.WriteLine("3) Avsluta och spara");
-                Console.WriteLine("Tomt: Slumpmässigt");
                 Console.Write("\r\nVad vill du göra? ");
                 switch (Console.ReadLine())
                 {
                     case "1":
-                        motstandare.health = motstandare.TakeDmg(spelare.strength);
-                        Console.WriteLine(String.Format("{0} slog {2}. {2} tog {1} skada.", spelare.namn, spelare.strength, motstandare.namn));
-                        spelet.LogThisForMe(String.Format("{2} skades av {0} ({1} skada).", spelare.namn, spelare.strength, motstandare.namn));
+                        //Motståndaren tar skada
+                        spelare.Attakera(motstandare, spelet);
                         break;
                     case "2":
-                        spelare.health = spelare.TakeDmg(spelare.health);
-                        spelare.isDead = true;
+                        //Spelaren ger upp
+                        spelare.Attakera(spelare, spelet);
                         avslutarSpelet = true;
                         break;
                     case "3":
+                        //Spelaren avslutar och sparar
                         Console.WriteLine(String.Format("Det verkar som att {0} vill ta en paus. Än så länge har {0} klarat sig i {1} rundor.", spelare.namn, spelet.rundorAvklarade));
-                        spelet.LogThisForMe(String.Format("Spelet avslutades vid runda {0} av spelaren.", spelet.rundorAvklarade));
-                        motstandare.health = motstandare.TakeDmg(motstandare.health);
+                        spelet.LoggaDetta(String.Format("Spelet avslutades vid runda {0} av spelaren.", spelet.rundorAvklarade));
                         avslutarSpelet = true;
-                        SaveGame(spelet, spelare);
+                        SaveGame(spelet, spelare, motstandare);
                         break;
                     default:
+                        //Motståndaren tar skada
+                        spelare.Attakera(motstandare, spelet);
                         break;
                 }
                 if (!avslutarSpelet)
                 {
-                    if (motstandare.health > 0)
+                    if (motstandare.befinnande > 0)
                     {
-                        spelare.health = spelare.TakeDmg(motstandare.strength);
-                        Console.WriteLine(String.Format("{0} slog {2}. {2} tog {1} skada.", motstandare.namn, motstandare.strength, spelare.namn));
-                        spelet.LogThisForMe(String.Format("{2} skades av {0} ({1} skada).", motstandare.namn, motstandare.strength, spelare.namn));
+                        motstandare.Attakera(spelare, spelet);
                     }
-                    spelare.isDead = spelare.CheckIfDead();
-                    motstandare.isDead = motstandare.CheckIfDead();
                 }
+                Console.WriteLine("Klicka enter för att fortsätta...");
+                Console.ReadLine();
             }
-            if (!spelare.isDead && motstandare.isDead && !avslutarSpelet)
+            if (!spelare.dead && motstandare.dead && !avslutarSpelet)
             {
-                spelare.health = playerMaxHealth;
+                //Spelarens hälsa återställs 
+                spelare.befinnande = playerMaxbefinnande;
+
+                //Spelaren ges gratismedelande
                 Console.WriteLine(String.Format("Grattis, du döda {0}", motstandare.namn));
-                spelet.LogThisForMe(String.Format("{0} dödade {1}", spelare.namn, motstandare.namn));
-                spelet.minhealth += 10;
-                spelet.maxhealth += 10;
-                spelet.LogThisForMe(String.Format("Runda {0} avklarad", spelet.rundorAvklarade));
+                spelet.LoggaDetta(String.Format("{0} dödade {1}", spelare.namn, motstandare.namn));
+
+                //Max och Min Hälsa ökas med 10 HP
+                spelet.minbefinnande += 10;
+                spelet.maxbefinnande += 10;
+
+                //loggar att runda är avklarad
+                spelet.LoggaDetta(String.Format("Runda {0} avklarad", spelet.rundorAvklarade));
                 spelet.rundorAvklarade += 1;
+                
+                //Ny motståndare läggs till
                 motstandare = CharacterCreation(spelet);
-                spelare.strength = spelare.RollTheDice();
-                SaveGame(spelet, spelare);
-                BattleMode(spelare, motstandare, spelet);
+
+                //Spelarens styrka randomizeras
+                spelare.styrka = spelare.RullaTarningen();
+
+                //Spara Spelet
+                SaveGame(spelet, spelare, motstandare);
+
+                //Ny runda
+                Runda(spelare, motstandare, spelet);
             }
-            if (spelare.isDead && !motstandare.isDead)
+            if (spelare.dead && !motstandare.dead)
             {
                 Console.WriteLine(String.Format("Det här verkar som slutet på resan för {0}, som stolt klarade sig i {1} rundor.", spelare.namn, spelet.rundorAvklarade - 1));
-                spelet.LogThisForMe(String.Format("Spelaren dog vid runda {0}, spelet avslutas", spelet.rundorAvklarade - 1));
+                spelet.LoggaDetta(String.Format("Spelaren dog vid runda {0}, spelet avslutas", spelet.rundorAvklarade - 1));
                 File.Delete("spelare.xml");
                 File.Delete("motstandare.xml");
                 File.Delete("spelet.xml");
             }
         }
 
-        static void SaveGame(Game spelet, Character spelare)
+        static void SaveGame(Game spelet, Character spelare, Character motstandare)
         {
-            spelet.LogThisForMe("Spelet sparades");
+            spelet.LoggaDetta("Spelet sparades");
             SaveViaDataContractSerialization(spelet, "spelet.xml");   //Spara Spelet
             SaveViaDataContractSerialization(spelare, "spelare.xml");   //Spara Spelaren
+            SaveViaDataContractSerialization(motstandare, "motstandare.xml");   //Spara Spelaren
             Console.WriteLine("Spelet har sparats!");
         }
         static Game LoadGame()
@@ -235,55 +295,56 @@ namespace Arena
         static void Main()
         {
             Character spelare;
-            if (!File.Exists("spelare.xml"))
+            Game spelet;
+            Character motstandare;
+            if (!File.Exists("spelet.xml"))
             {
-                // Spara objektet
+                // Skapa spelet
+                spelet = new Game(30, 71, 1, 11, 1, "Startet av spelet");
+
+                // Skapa spelaren
                 Random rand = new Random();
-                int sHealth = rand.Next(30, 101); //Hälsa, mellan 30 och 100.
+                int sbefinnande = rand.Next(30, 101); //Hälsa, mellan 30 och 100.
                 Console.WriteLine("Vad heter din spelare?");
-                spelare = new Character(Console.ReadLine(), sHealth, 0, false); //Skapa Spelaren
+                spelare = new Character(Console.ReadLine(), sbefinnande, 0, false, 1, rand.Next(1, 51), 0, 0); //Skapa Spelaren
                 Console.WriteLine("Du kastar en tärning");
-                spelare.strength = spelare.RollTheDice();
+                spelare.styrka = spelare.RullaTarningen();
                 SaveViaDataContractSerialization(spelare, "spelare.xml");   //Spara Spelaren
                 spelare = null; //Spelaren "tas bort"
                 spelare = LoadViaDataContractSerialization<Character>("spelare.xml"); //Ladda in spelare.
                 Console.WriteLine(spelare.ToString()); //Visa spelaren
-            }
-            else
-            {
-                spelare = LoadViaDataContractSerialization<Character>("spelare.xml"); //Ladda in spelare.
-                if (spelare.isDead == null)
-                {
-                    spelare.isDead = false;
-                    SaveViaDataContractSerialization(spelare, "spelare.xml");   //Spara Spelaren
-                    spelare = null; //Spelaren "tas bort"
-                    spelare = LoadViaDataContractSerialization<Character>("spelare.xml"); //Ladda in spelare.
-                }
-                Console.WriteLine(spelare.ToString()); //Visa spelaren
-            }
-            Game spelet;
-            if (!File.Exists("spelet.xml"))
-            {
-                spelet = new Game(30, 101, 1, 11, 1, "Startet av spelet");
-                SaveGame(spelet, spelare);
+                
+                //Skapa Motståndaren
+                motstandare = CharacterCreation(spelet);
+
+                //Spara spelet och dess karaktärer
+                SaveGame(spelet, spelare, motstandare);
             }
             else
             {
                 spelet = LoadGame();
-                spelet.LogThisForMe("Laddade in spelet");
+                spelet.LoggaDetta("Laddade in spelet");
+                spelare = LoadViaDataContractSerialization<Character>("spelare.xml"); //Ladda in spelare.
+                if (spelare.dead == null)
+                {
+                    spelare.dead = false;
+                }
+                Console.WriteLine(spelare.ToString()); //Visa spelaren
+                SaveViaDataContractSerialization(spelare, "spelare.xml");   //Spara Spelaren
+                spelare = null; //Spelaren "tas bort"
+                spelare = LoadViaDataContractSerialization<Character>("spelare.xml"); //Ladda in spelare.
+
+                //Ladda in motståndaren
+                motstandare = LoadViaDataContractSerialization<Character>("motstandare.xml"); //Ladda in spelare.
+                if (motstandare.dead == null)
+                {
+                    motstandare.dead = false;
+                }
+                SaveViaDataContractSerialization(motstandare, "motstandare.xml");   //Spara Spelaren
+                motstandare = null; //Spelaren "tas bort"
+                motstandare = LoadViaDataContractSerialization<Character>("motstandare.xml"); //Ladda in spelare.
             }
-            Character motstandare;
-            //Om det inte finns en fil med namnet "motstandare.xml", skapa en ny motståndare.
-            if (!File.Exists("motstandare.xml"))
-            {
-                motstandare = CharacterCreation(spelet);
-            }
-            //Om det finns en fil med namnet "motstandare.xml", ladda in den motståndare.
-            else
-            {
-                motstandare = LoadViaDataContractSerialization<Character>("motstandare.xml");
-            }
-            BattleMode(spelare, motstandare, spelet);
+            Runda(spelare, motstandare, spelet);
         }
     }
 }
