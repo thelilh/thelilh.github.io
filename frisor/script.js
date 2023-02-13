@@ -9,21 +9,7 @@ let images = [
   ["img/img3.webp", "Kontakta oss", "/contact"],
 ];
 let index = 0;
-
-function imgHeaderLoop() {
-  if (
-    !(
-      window.location.pathname.includes("about") ||
-      window.location.pathname.includes("bokning") ||
-      window.location.pathname.includes("contact")
-    )
-  ) {
-    header.style.backgroundImage = `url(img/img1.webp)`;
-  } else {
-    header.style.backgroundImage = `url(../img/img1.webp)`;
-  }
-}
-
+header.style.backgroundImage = `url(https://thelilh.github.io/frisor/img/img1.webp)`;
 /*
 Random Number
 */

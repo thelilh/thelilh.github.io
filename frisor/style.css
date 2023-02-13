@@ -77,7 +77,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("/img/img5.webp");
+  background-image: url("https://thelilh.github.io/frisor/img/img5.webp");
 }
 .book .btn {
   width: 10em;
@@ -127,13 +127,13 @@ body {
   margin-top: -3em;
 }
 .treatments .row div:nth-child(1) {
-  background-image: url("/img/img3.webp");
+  background-image: url("https://thelilh.github.io/frisor/img/img3.webp");
 }
 .treatments .row div:nth-child(2) {
-  background-image: url("/img/img2.webp");
+  background-image: url("https://thelilh.github.io/frisor/img/img2.webp");
 }
 .treatments .row div:nth-child(3) {
-  background-image: url("/img/img4.webp");
+  background-image: url("https://thelilh.github.io/frisor/img/img4.webp");
 }
 .treatments .row div {
   background-position: center;
