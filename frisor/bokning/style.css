@@ -1,0 +1,69 @@
+* {
+  color: var(--main-text-color) !important;
+}
+.imgHeader {
+  min-height: 40vh; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  overflow: hidden;
+  font-style: italic;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.imgHeader h1 {
+  cursor: pointer;
+}
+.bg-transparent {
+  margin-top: 2.25em;
+  background: rgba(0, 0, 0, 0.4) !important;
+}
+.bg-transparent:hover {
+  background: rgba(0, 0, 0, 1) !important;
+}
+body {
+  background-color: var(--main-bg-color) !important;
+  color: var(--main-text-color) !important;
+}
+.navbar,
+.navbar-brand {
+  background-color: var(--sub-bg-color) !important;
+}
+.nav-link:hover,
+.navbar-brand:hover {
+  background-color: var(--main-bg-color) !important;
+}
+
+.navbar-brand {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  border-radius: 0.3em;
+}
+.navbar-brand::before {
+  color: rgb(255, 0, 0);
+  content: "✂️<";
+}
+.navbar-brand {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  color: rgb(0, 100, 255) !important;
+}
+.navbar-brand::after {
+  color: rgb(0, 255, 0);
+  content: "/>";
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --main-bg-color: #555;
+    --sub-bg-color: #333;
+    --main-text-color: #fff;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --main-bg-color: #fff;
+    --sub-bg-color: #ddd;
+    --main-text-color: #000;
+  }
+}

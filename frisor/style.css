@@ -1,0 +1,72 @@
+* {
+  color: #ffffff !important;
+  transition: all 500ms;
+}
+.imgHeader {
+  min-height: 40vh; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  overflow: hidden;
+  font-style: italic;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.imgHeader h1 {
+  cursor: pointer;
+}
+.bg-transparent {
+  margin-top: 2.25em;
+  width: 20vw;
+  margin-right: auto;
+  margin-left: auto;
+  border: 5px solid rgb(63, 63, 209);
+  background-color: #ffffff !important;
+  border-radius: 1em;
+  padding: 10px;
+  color: black !important;
+}
+.bg-transparent:hover {
+  background: rgb(63, 63, 209) !important;
+  border: 5px solid none;
+  color: #ffffff !important;
+}
+body {
+  background-color: #555 !important;
+  color: #ffffff !important;
+}
+.navbar,
+.navbar-brand {
+  background-color: #333 !important;
+}
+.navbar {
+  border-bottom: 0.2em solid red;
+}
+.nav-link:hover {
+  background-color: #555 !important;
+}
+.navbar-brand:hover {
+  color: rgb(63, 63, 209) !important;
+}
+
+.navbar-brand {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  border-radius: 0.3em;
+}
+.navbar-brand {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  color: rgb(255, 174, 0) !important;
+}
+.dropdown-item,
+.dropdown-menu {
+  background-color: #555;
+  color: #ffffff;
+}
+.dropdown-item:hover {
+  background-color: #333;
+}
+
+.dropdown-item {
+  cursor: pointer;
+}
