@@ -1,40 +1,16 @@
 const header = document.getElementById("imgHeader");
+const phoneNumber = document.querySelector("#randomNumber");
+const headerClick = document.getElementById("headerClick");
+const headerLink = document.getElementById("headerLink");
+const existingItems = document.getElementById("existingItemsUl");
 let images = [
-  ["img/img1.webp", "Boka tid"],
-  ["img/img2.webp", "Image 2"],
-  ["img/img3.webp", "Image 3"],
-  ["img/img4.webp", "Färga håret?"],
+  ["img/img1.webp", "Boka tid", "/bokning"],
+  ["img/img2.webp", "Om Saxalagom", "/about"],
+  ["img/img3.webp", "Kontakta oss", "/contact"],
 ];
 let index = 0;
 
 function imgHeaderLoop() {
-  console.log(index);
-  //Kolla om vi är större än längden av images
-  if (index >= images.length || index < 0) {
-    index = 0;
-  }
-  //Hämta bilden från index.
-  console.log(images[index][0]);
-  header.style.backgroundImage = `url(${images[index][0]})`;
-  for (const child of header.children) {
-    if (child.tagName === "H1") {
-      child.innerText = images[index][1];
-    }
-  }
-  //Lägg till en på index.
-  index++;
-  //Sätt en timeout på 5 sekunder (5000ms)
-  setTimeout(imgHeaderLoop, 5000);
-}
-
-/*
-Improvise, adapt, overcome.
-*/
-function fixImages(url) {
-  /*
-    Om vi är vi "hem" (dvs inte contact el. bokning), gör inget.
-    Om vi inte är där, lägg till "../".
-  */
   if (
     !(
       window.location.pathname.includes("about") ||
@@ -42,19 +18,33 @@ function fixImages(url) {
       window.location.pathname.includes("contact")
     )
   ) {
-    return url;
+    header.style.backgroundImage = `url(img/img1.webp)`;
   } else {
-    return `../${url}`;
+    header.style.backgroundImage = `url(../img/img1.webp)`;
   }
 }
-for (let i = 0; i < images.length; i++) {
-  let element = images[i][0];
-  element = fixImages(element);
-  images[i][0] = element;
-}
-console.log(images);
-imgHeaderLoop();
 
+/*
+Random Number
+*/
+if (typeof phoneNumber != "undefined" && phoneNumber != null) {
+  phoneNumber.innerText = randomPhoneNumber();
+}
+
+function randomPhoneNumber() {
+  let tmpArray = [
+    "071-979 64 91",
+    "079-954 76 44",
+    "071-004 36 36",
+    "071-911 24 63",
+    "071-829 03 81",
+    "071-420 69 30",
+  ];
+  let min = 0;
+  let max = tmpArray.length;
+  let num = tmpArray[Math.floor(Math.random() * (max - min)) + min];
+  return num;
+}
 /*
 Kundvagn
 */
@@ -71,20 +61,34 @@ class cartItem {
   }
 }
 class cart {
-  constructor(id, name, items) {
-    this.id = id;
-    this.name = name;
-    this.items = items;
+  constructor() {
+    this.existingItems = [
+      new cartItem(0, "Herrklippning (30 min)", 200),
+      new cartItem(1, "Herrklippning (60 min)", 250),
+      new cartItem(2, "Herrklippning (90 min)", 300),
+      new cartItem(3, "Dammklippning (30 min)", 200),
+      new cartItem(4, "Dammklippning (60 min)", 250),
+      new cartItem(5, "Dammklippning (90 min)", 300),
+      new cartItem(6, "Färgning/Blekning", 200),
+    ];
+    this.items = {
+      0: 0,
+      1: 0,
+      2: 0,
+      3: 0,
+      4: 0,
+      5: 0,
+      6: 0,
+    };
   }
 
-  AddToCart(item) {
-    this.items.push(item);
+  AddToCart(key) {
+    this.items[key]++;
+    this.CreateCartAsElements();
   }
 
-  RemoveFromCart(item) {
-    if (item in this.items) {
-      this.items.pop();
-    }
+  RemoveFromCart(key) {
+    this.items[key]--;
     console.log(this.items);
     this.CreateCartAsElements();
   }
@@ -93,24 +97,64 @@ class cart {
     return this.items;
   }
 
+  TotalPrice() {
+    let price = 0;
+    for (let key in this.items) {
+      if (this.items[key] > 0) {
+        price += this.existingItems[key].cost * this.items[key];
+      }
+    }
+    return price.toString();
+  }
+
+  AnyDictLargerThanZero() {
+    for (var key in this.items) {
+      if (this.items[key] > 0) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   CreateCartAsElements() {
     cartElement.innerHTML = ``;
-    if (this.items.length > 0) {
-      for (const item of this.items) {
-        const a = document.createElement("li");
-        a.innerText = `${item.ToString()}`;
-        a.classList.add("dropdown-item");
-        a.onclick = () => {
-          this.RemoveFromCart(item);
-        };
-        cartElement.appendChild(a);
+    if (this.AnyDictLargerThanZero()) {
+      for (let key in this.items) {
+        if (this.items[key] > 0) {
+          const p = document.createElement("p");
+          p.innerText = `${this.existingItems[key].ToString()} x${
+            this.items[key]
+          }`;
+          p.classList.add("dropdown-item");
+          p.onclick = () => {
+            this.RemoveFromCart(key);
+          };
+          cartElement.appendChild(p);
+        }
       }
+      const p = document.createElement("p");
+      p.innerText = `Total Price: ${this.TotalPrice()}`;
+      cartElement.appendChild(p);
     } else {
-      console.log(this.name);
+      const p = document.createElement("p");
+      p.innerText = "Add something to your cart!";
+      p.classList.add("dropdown-item");
+      cartElement.appendChild(p);
+    }
+
+    //Existing Items
+    if (existingItems != null && this.existingItems.length > 0) {
+      existingItems.innerHTML = ``;
+      for (const item of this.existingItems) {
+        const li = document.createElement("li");
+        li.innerText = `${item.ToString()}`;
+        li.onclick = () => {
+          this.AddToCart(item.id);
+        };
+        existingItems.appendChild(li);
+      }
     }
   }
 }
-const newCart = new cart(0, "test", []);
-newCart.AddToCart(new cartItem(0, "test", 5));
-newCart.AddToCart(new cartItem(0, "Test 2", 15));
+const newCart = new cart();
 newCart.CreateCartAsElements();

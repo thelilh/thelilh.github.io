@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>Saxalagom - Om oss</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <meta
-      name="description"
-      content="Saxalagom är en frisör utanför Göteborg"
-    />
+    <meta name="description" content="Saxalagom är en frisör i Göteborg" />
 
     <!-- Bootstrap CSS v5.2.1 -->
     <link
@@ -41,35 +38,107 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-sm">
-        <div class="container">
-          <a class="navbar-brand" href="../">Saxalagom</a>
+      <div class="logo-div">
+        <a class="logo" href="../"
+          ><img
+            width="676"
+            height="170"
+            src="../img/saxalagom-logo.webp"
+            alt="Logotyp för Saxalagom"
+        /></a>
+      </div>
+      <nav class="navbar navbar-expand-sm navbar-light bg-light font-monospace">
+        <div class="container justify-content-end">
+          <button
+            class="navbar-toggler d-lg-none bg-info"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
           <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav me-auto mt-2 mt-lg-0">
               <li class="nav-item">
-                <a class="nav-link rounded" href="../bokning/">Bokning</a>
+                <a class="nav-link" href="#"
+                  >Om Saxalagom
+                  <span class="visually-hidden">(current)</span></a
+                >
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="../contact/">Kontakta oss</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../bokning/">Boka tid</a>
+              </li>
+              <li class="nav-item dropdown">
                 <a
-                  class="nav-link rounded"
-                  href="../contact/"
-                  aria-current="page"
-                  >Kontakta oss</a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="dropdownId"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  >Varukorg</a
                 >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link rounded" href="#" aria-current="page"
-                  >Om oss</a
-                >
+                <div
+                  class="dropdown-menu"
+                  id="cart"
+                  aria-labelledby="dropdownId"
+                ></div>
               </li>
             </ul>
           </div>
         </div>
       </nav>
     </header>
-    <main>
-      <div class="imgHeader text-center" id="imgHeader">
-        <h1 class="bg-transparent">test</h1>
+    <main class="text-center">
+      <div class="imgHeader" id="imgHeader">
+        <h1 class="button-custom-bkg" id="click">Om Saxalagom</h1>
+      </div>
+      <div>
+        <div class="container">
+          <div class="row">
+            <div class="col-5">
+              <h1 class="pt-5">Frisörsalong i centrala Göteborg</h1>
+              <p class="text-start">
+                Saxalagom har våran salong på Tredje Långgatan mellan de
+                underbara områdena Haga och Masshugget där vi brinner för att du
+                ska ha en lagom frisyr och vara glad över det. För vem fan tror
+                du att du är? Kungen? De e bara en frisyr liksom?
+              </p>
+              <h1 class="pt-5">Alla är välkomna</h1>
+              <p class="text-start">
+                Så länge du kan betala för din frisyr bryr vi fan oss inte om
+                vem du är. Kan vi din frisyr? Boka då tid, så kanske vi kan göra
+                något åt dit hår. Vi lovar inget, bara att ditt hår ser inte sig
+                likt ut när du kom till oss.
+              </p>
+              <h1 class="pt-5">Kontantfri butik</h1>
+              <p class="pb-5">
+                Saxalagom är en kontantfri butik. Vi välkomnar att betala med de
+                vanligaste typerna av betal- och kreditkort.
+              </p>
+            </div>
+            <div class="col">
+              <h2 class="pt-5 pb-5">Hitta oss på Google!</h2>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d163.11032727243364!2d11.948160359585058!3d57.69832238688876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464ff34170cb9103%3A0xc5c134fa79172847!2sTredje%20L%C3%A5nggatan%2026%2C%20413%2028%20G%C3%B6teborg!5e0!3m2!1sen!2sse!4v1676188472140!5m2!1sen!2sse"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Google Maps"
+                class="rounded-5 mb-5 border border-5 border-info"
+                width="500"
+                height="400"
+              ></iframe>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
     <footer></footer>

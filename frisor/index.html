@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>Saxalagom - Helt Lagom Klippning</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <meta
-      name="description"
-      content="Saxalagom är en frisör utanför Göteborg"
-    />
+    <meta name="description" content="Saxalagom är en frisör i Göteborg" />
 
     <!-- Bootstrap CSS v5.2.1 -->
     <link
@@ -35,58 +32,107 @@
       crossorigin="anonymous"
       defer
     ></script>
-    <link rel="stylesheet" href="../style.css" />
-    <script src="../script.js" defer></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-sm">
-        <div class="container">
-          <a class="navbar-brand" href="#">✂️Saxalagom</a>
+      <div class="logo-div">
+        <a class="logo" href="#"
+          ><img
+            width="1472"
+            height="370"
+            src="img/saxalagom-logo.webp"
+            alt="Logotyp för Saxalagom"
+        /></a>
+      </div>
+      <nav class="navbar navbar-expand-sm navbar-light bg-light font-monospace">
+        <div class="container justify-content-end">
+          <button
+            class="navbar-toggler d-lg-none bg-info"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
           <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav me-auto mt-2 mt-lg-0">
               <li class="nav-item">
-                <a class="nav-link rounded" href="bokning/">Bokning</a>
+                <a class="nav-link" href="about">Om Saxalagom</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link rounded" href="contact/" aria-current="page"
-                  >Kontakta oss</a
-                >
+                <a class="nav-link" href="contact">Kontakta oss</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link rounded" href="about/" aria-current="page"
-                  >Om oss</a
+                <a class="nav-link" href="bokning">Boka tid</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="dropdownId"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  >Varukorg</a
                 >
+                <div
+                  class="dropdown-menu"
+                  id="cart"
+                  aria-labelledby="dropdownId"
+                ></div>
               </li>
             </ul>
-            <div class="dropdown float-end">
-              <button
-                class="btn btn-secondary dropdown-toggle"
-                type="button"
-                id="triggerId"
-                data-bs-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Cart
-              </button>
-              <div class="dropdown-menu" aria-labelledby="triggerId">
-                <ul id="cart"></ul>
-              </div>
-            </div>
           </div>
         </div>
       </nav>
     </header>
-    <main>
-      <div class="imgHeader text-center" id="imgHeader">
-        <h1 class="bg-transparent" id="click">test</h1>
+    <main class="text-center">
+      <div class="imgHeader" id="imgHeader">
+        <h1>Välkommen till Saxalagom!</h1>
       </div>
-      <div>
-        <p>test</p>
+      <div class="treatments container mw-100">
+        <h1 class="pt-3 pb-3">Våra Behandlingar</h1>
+        <div class="row justify-content-center align-items-center g-2">
+          <div class="col">
+            <a href="/bokning" class="text-decoration-none">
+              <p>Herrklippning</p>
+            </a>
+          </div>
+          <div class="col">
+            <a href="/bokning" class="text-decoration-none">
+              <p>Olaplex behandling</p>
+            </a>
+          </div>
+          <div class="col">
+            <a href="/bokning" class="text-decoration-none">
+              <p>Klipp & färg</p>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="book">
+        <h1>Boka Ett Besök</h1>
+        <p>Vill du boka en tid eller diskutera alternativ?</p>
+        <p>
+          Ring:
+          <span
+            class="italic noSelect"
+            id="randomNumber"
+            title="Detta nummer finns ej"
+            >073-979 64 91</span
+          >
+          eller boka online
+        </p>
+        <a class="btn button-custom-bkg" href="bokning" role="button"
+          >Boka online</a
+        >
       </div>
     </main>
-    <footer></footer>
   </body>
 </html>

@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>Saxalagom - Bokning</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <meta name="description" content="Saxalagom är en frisör i Göteborg" />
 
     <!-- Bootstrap CSS v5.2.1 -->
     <link
@@ -37,35 +38,70 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-sm">
-        <div class="container">
-          <a class="navbar-brand" href="../">Saxalagom</a>
+      <div class="logo-div">
+        <a class="logo" href="../"
+          ><img
+            width="676"
+            height="170"
+            src="../img/saxalagom-logo.webp"
+            alt="Logotyp för Saxalagom"
+        /></a>
+      </div>
+      <nav class="navbar navbar-expand-sm navbar-light bg-light font-monospace">
+        <div class="container justify-content-end">
+          <button
+            class="navbar-toggler d-lg-none bg-info"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
           <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav me-auto mt-2 mt-lg-0">
               <li class="nav-item">
-                <a class="nav-link rounded" href="#">Bokning</a>
+                <a class="nav-link" href="../about/">Om Saxalagom</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="../contact/">Kontakta oss</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"
+                  >Boka tid <span class="visually-hidden">(current)</span></a
+                >
+              </li>
+              <li class="nav-item dropdown">
                 <a
-                  class="nav-link rounded"
-                  href="../contact/"
-                  aria-current="page"
-                  >Kontakta oss</a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="dropdownId"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  >Varukorg</a
                 >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link rounded" href="../about/" aria-current="page"
-                  >Om oss</a
-                >
+                <div
+                  class="dropdown-menu"
+                  id="cart"
+                  aria-labelledby="dropdownId"
+                ></div>
               </li>
             </ul>
           </div>
         </div>
       </nav>
     </header>
-    <main>
-      <div class="imgHeader text-center" id="imgHeader">
-        <h1 class="bg-transparent">test</h1>
+    <main class="text-center">
+      <div class="imgHeader" id="imgHeader">
+        <h1 class="button-custom-bkg" id="click">Bokning av Tider</h1>
+      </div>
+      <div>
+        <div class="container">
+          <ul id="existingItemsUl"></ul>
+        </div>
       </div>
     </main>
     <footer></footer>

@@ -1,72 +1,157 @@
 * {
-  color: #ffffff !important;
-  transition: all 500ms;
-}
-.imgHeader {
-  min-height: 40vh; /* You must set a specified height */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
-  overflow: hidden;
-  font-style: italic;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-.imgHeader h1 {
-  cursor: pointer;
-}
-.bg-transparent {
-  margin-top: 2.25em;
-  width: 20vw;
-  margin-right: auto;
-  margin-left: auto;
-  border: 5px solid rgb(63, 63, 209);
-  background-color: #ffffff !important;
-  border-radius: 1em;
-  padding: 10px;
-  color: black !important;
-}
-.bg-transparent:hover {
-  background: rgb(63, 63, 209) !important;
-  border: 5px solid none;
-  color: #ffffff !important;
+  color: #fff !important;
+  transition: all 0.5s;
 }
 body {
+  color: #fff !important;
   background-color: #555 !important;
-  color: #ffffff !important;
 }
-.navbar,
-.navbar-brand {
+.imgHeader {
+  min-height: 9em;
+  max-height: 18em;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("img/img1.webp");
+  overflow: hidden;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 8em;
+  margin: 0;
+}
+.imgHeader h1 {
+  line-height: 1.5;
+  display: inline-block;
+  vertical-align: middle;
+  width: 100vw;
+  padding: 3em;
+  backdrop-filter: blur(5px);
+}
+.logo-div,
+.navbar {
   background-color: #333 !important;
 }
 .navbar {
-  border-bottom: 0.2em solid red;
+  min-height: 10vh;
+  z-index: 1;
+}
+.nav-link {
+  font-size: 2em;
+  margin-right: 1em;
+  border-bottom: 5px solid #333;
 }
 .nav-link:hover {
-  background-color: #555 !important;
-}
-.navbar-brand:hover {
-  color: rgb(63, 63, 209) !important;
-}
-
-.navbar-brand {
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  border-radius: 0.3em;
-}
-.navbar-brand {
-  font-family: "Courier New", Courier, monospace;
-  font-weight: bold;
-  color: rgb(255, 174, 0) !important;
+  border-bottom: 5px solid #fff;
 }
 .dropdown-item,
 .dropdown-menu {
   background-color: #555;
-  color: #ffffff;
+  color: #fff;
 }
 .dropdown-item:hover {
   background-color: #333;
 }
-
 .dropdown-item {
   cursor: pointer;
+}
+.logo img {
+  max-width: 35em;
+  max-height: 11em;
+  padding: 1em;
+}
+.book,
+.treatments {
+  height: 20em;
+}
+.book p {
+  margin: 0;
+}
+.book p:last-of-type {
+  margin-bottom: 1em;
+}
+.book h1 {
+  padding-top: 1.75em;
+}
+.book {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("/img/img5.webp");
+}
+.book .btn {
+  width: 10em;
+}
+.button-custom-bkg {
+  border: 5px solid #e8772e;
+  background-color: #fff !important;
+  border-radius: 1em;
+  padding: 10px;
+  color: #000 !important;
+}
+.button-custom-bkg:hover {
+  background: #e8772e !important;
+  border: 5px solid none;
+  color: #fff !important;
+}
+.italic {
+  font-style: italic;
+}
+.noSelect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.treatments .row .col {
+  height: 16.5em !important;
+}
+.treatments,
+.treatments .col,
+.treatments .row {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.treatments .col:hover p {
+  opacity: 1;
+  margin-top: -1.5em;
+}
+.treatments .col p {
+  opacity: 0;
+  font-size: 3em;
+  background-color: rgba(255, 0, 0, 0.4);
+  padding: 3em 3em 5em 3em;
+  margin-top: -3em;
+}
+.treatments .row div:nth-child(1) {
+  background-image: url("/img/img3.webp");
+}
+.treatments .row div:nth-child(2) {
+  background-image: url("/img/img2.webp");
+}
+.treatments .row div:nth-child(3) {
+  background-image: url("/img/img4.webp");
+}
+.treatments .row div {
+  background-position: center;
+}
+.opacityZero {
+  opacity: 0;
+}
+@media only screen and (max-width: 600px) {
+  .imgHeader {
+    min-height: 2em;
+    max-height: 15.5em;
+    line-height: 1em;
+  }
+  .logo img {
+    max-width: 100%;
+    max-height: 15vh;
+  }
+  .opacityZero {
+    opacity: 1;
+  }
 }
