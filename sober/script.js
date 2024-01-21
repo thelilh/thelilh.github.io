@@ -1,26 +1,37 @@
-const yearElement = document.getElementById("years");
-const monthElement = document.getElementById("months");
-const dayElement = document.getElementById("days");
+import { CounterDateTime } from '../modules/CounterDateTime.js';
 
-function calcAlcoholFreeDate() {
-    const startDate = new Date("22 August 2023 00:00:00 GMT+2");
-    const endDate = new Date();
-    const oneDayMs = 1000 * 60 * 60 * 24;
-    const diffMs = endDate.getTime() - startDate.getTime();
-    const diffDays = Math.floor(diffMs / oneDayMs);
-    const years = Math.floor(diffDays / 365);
-    const months = Math.floor(diffDays / 30.44) % 12;
-    const days = diffDays - (years * 365) - (Math.floor(months * 30.44));
-    return { years, months, days };
-}
+var calculated_date = new CounterDateTime(new Date("22 August 2023"), new Date());
+console.log(calculated_date.toString());
 
-function fixAlcoholFreeElements() {
-    var dateDifference = calcAlcoholFreeDate();
-    yearElement.innerHTML = dateDifference.years;
-    monthElement.innerHTML = dateDifference.months;
-    dayElement.innerHTML = dateDifference.days;
+try {
+    const year_element = document.getElementById("years");
+    const month_element = document.getElementById("months");
+    const day_element = document.getElementById("days");
+    if (year_element != null) {
+        if (calculated_date.getYear() == "00Y") {
+            year_element.style.display = "none";
+        }
+        year_element.innerHTML = calculated_date.getYear();
+        if (calculated_date.getMonth() == "00M" && calculated_date.getDay() == "00D") {
+            year_element.innerHTML = calculated_date.years > 1 ? calculated_date.years + " YEARS" : calculated_date.years + " YEAR";
+        }
+    }
+    if (month_element != null) {
+        if (calculated_date.getMonth() == "00M") {
+            month_element.style.display = "none";
+        }
+        month_element.innerHTML = calculated_date.getMonth();
+        if (calculated_date.getYear() == "00Y" && calculated_date.getDay() == "00D") {
+            month_element.innerHTML = calculated_date.months > 1 ? calculated_date.months + " MONTHS" : calculated_date.months + " MONTH";
+        }
+    }
+    if (day_element != null) {
+        if (calculated_date.getDay() == "00D") {
+            day_element.style.display = "none";
+        }
+        day_element.innerHTML = calculated_date.getDay();
+    }
 }
-fixAlcoholFreeElements();
-setTimeout(() => {
-    fixAlcoholFreeElements();
-}, 2000);
+catch (error) {
+    console.error(error);
+}

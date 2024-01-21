@@ -1,48 +1,25 @@
-const hrtYearElement = document.getElementById("years");
-const hrtMonthElement = document.getElementById("months");
-const hrtDayElement = document.getElementById("days");
-const realYearElement = document.getElementById("real-years");
-const realMonthElement = document.getElementById("real-months");
-const realDayElement = document.getElementById("real-days");
+import { CounterDateTime } from '../modules/CounterDateTime.js';
 
-function calcHrtDate() {
-    const startDate = new Date("18 September 2020 17:41:00 GMT+2");
-    const endDate = new Date();
-    const oneDayMs = 1000 * 60 * 60 * 24;
-    const diffMs = endDate.getTime() - startDate.getTime();
-    const diffDays = Math.floor(diffMs / oneDayMs);
-    const years = Math.floor(diffDays / 365);
-    const months = Math.floor(diffDays / 30.44) % 12;
-    const days = diffDays - (years * 365) - (Math.floor(months * 30.44));
-    return { years, months, days };
-}
-function calcRealizationDate() {
-    const startDate = new Date("20 November 2017 18:18:00 GMT+2");
-    const endDate = new Date();
-    const oneDayMs = 1000 * 60 * 60 * 24;
-    const diffMs = endDate.getTime() - startDate.getTime();
-    const diffDays = Math.floor(diffMs / oneDayMs);
-    const years = Math.floor(diffDays / 365);
-    const months = Math.floor(diffDays / 30.44) % 12;
-    const days = diffDays - (years * 365) - (Math.floor(months * 30.44));
-    return { years, months, days };
-}
+var calculated_date = new CounterDateTime(new Date("18 September 2020"), new Date());
+console.log(calculated_date.toString());
 
-function fixHrtElements() {
-    var dateDifference = calcHrtDate();
-    hrtYearElement.innerHTML = dateDifference.years;
-    hrtMonthElement.innerHTML = dateDifference.months;
-    hrtDayElement.innerHTML = dateDifference.days;
+try {
+    const year_element = document.getElementById("years");
+    const month_element = document.getElementById("months");
+    const day_element = document.getElementById("days");
+    if (year_element != null) {
+        if (calculated_date.getYear() == "00Y") {
+            year_element.style.display = "none";
+        }
+        year_element.innerHTML = calculated_date.getYear();
+    }
+    if (month_element != null) {
+        month_element.innerHTML = calculated_date.getMonth();
+    }
+    if (day_element != null) {
+        day_element.innerHTML = calculated_date.getDay();
+    }
 }
-function fixRealizationElements() {
-    var dateDifference = calcRealizationDate();
-    realYearElement.innerHTML = dateDifference.years;
-    realMonthElement.innerHTML = dateDifference.months;
-    realDayElement.innerHTML = dateDifference.days;
+catch (error) {
+    console.error(error);
 }
-fixHrtElements();
-fixRealizationElements();
-setTimeout(() => {
-    fixHrtElements();
-    fixRealizationElements();
-}, 2000);
