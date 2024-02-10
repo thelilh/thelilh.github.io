@@ -1,18 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,700,900");
 
-* {
-  box-sizing: border-box;
-  transition: all ease-in-out 250ms;
-}
-
 body {
   margin: 0;
   font-family: "Raleway", sans-serif;
   text-align: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 100vh;
 }
 
 h1 {

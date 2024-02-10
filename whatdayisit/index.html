@@ -7,7 +7,6 @@
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		<h1><br><br></h1>
 		<h1 id="today">Today is</h1>
 		<h1 id="theDay">Test</h1>
 		<h1 id="theDate"></h1>
@@ -46,7 +45,7 @@
 			var mm = String(d.getMonth() + 1).padStart(2, '0'); //January is 0!
 			var yyyy = d.getFullYear();
 
-			var today = mm + '/' + dd + '/' + yyyy;
+			var today = dd + '/' + mm + '/' + yyyy;
 			today = today + " (Week " + d.getWeek() + ")";
 			y = 0
 			yy = 0
