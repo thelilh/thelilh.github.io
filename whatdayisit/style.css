@@ -1,25 +1,29 @@
 * {
-	font-family: 'Roboto', sans-serif; 
-}
-@keyframes example {
-  0%   {opacity: 0;}
-  100% {opacity: 1.0;}
-}
-h1 {
-	margin-left: auto;
-	margin-right: auto;
-	width: 8em;
+	font-family: 'Comic Sans MS', sans-serif; /* love comic, it's my favourite sans */
 	text-align: center;
+	margin: auto;
 }
+
+@keyframes fadeIntoExistence {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1.0;
+	}
+}
+
 #today {
-	font-size: 6em;
+	padding-top: 1em;
+	font-size: 3em;
 }
+
 #theDay {
-	margin-top: -0.5em;
 	font-size: 10em;
 }
+
 #theDate {
-	margin-top: -4em;
-	animation-name: example;
+	animation-name: fadeIntoExistence;
 	animation-duration: 6s;
 }
