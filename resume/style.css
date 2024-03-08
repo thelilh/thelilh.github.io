@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,700,900");
+* {
+    font-family: "Raleway", sans-serif;
+}
+.force-uppercase {
+    text-transform: uppercase;
+}
+.rounded-image {
+    border-radius: 50%;
+}
+
+a, a:hover {
+    text-decoration: none;
+}
+
+.svg {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    position: absolute;
+    margin-left: -35px;
+    margin-top: -6px;
+}
+
+.svg:hover {
+    fill: #555;
+}
+
+.fix-for-icons {
+    color: #000;
+    margin-left: 35px;
+}
+.fix-for-icons:hover {
+    color: #555;
+}
+.fix-for-icons:hover .svg {
+    fill: #555;
+}

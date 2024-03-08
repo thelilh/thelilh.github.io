@@ -1,6 +1,6 @@
 import { CounterDateTime } from '../modules/CounterDateTime.js';
 
-var calculated_date = new CounterDateTime(new Date("22 August 2023"), new Date());
+var calculated_date = new CounterDateTime(new Date("22 August 2023"), new Date("8 March 2024"));
 console.log(calculated_date.toString());
 
 try {

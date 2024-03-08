@@ -1,0 +1,97 @@
+{
+    "clickExperience": {
+        "en": "Click here to see my work experience"
+    },
+    "contactMe": {
+        "en": "Contact me",
+        "sv": "Kontakta mig"
+    },
+    "aboutMe": {
+        "en": "About me",
+        "sv": "Om mig"
+    },
+    "aboutMeInfo1": {
+        "en": "I am a social person with a great interest in programming and technology.",
+        "sv": "Jag är en social person med stort intresse inom programmering och teknik."
+    },
+    "aboutMeInfo2": {
+        "en": "I consider myself to be the best when there is structure and a lot to do where I can come up with creative solutions to problems!",
+        "sv": "Jag anser mig själv vara som bäst när det finns struktur, mycket att göra och där jag kan komma med kreativa lösningar på problem!"
+    },
+    "experience": {
+        "en": "Experience",
+        "sv": "Erfarenhet"
+    },
+    "kitchenAssistant": {
+        "en": "Kitchen Assistant",
+        "sv": "Köksbiträde"
+    },
+    "january": {
+        "en": "January",
+        "sv": "Januari"
+    },
+    "february": {
+        "en": "February",
+        "sv": "Februari"
+    },
+    "march": {
+        "en": "March",
+        "sv": "Mars"
+    },
+    "april": {
+        "en": "April",
+        "sv": "April"
+    },
+    "may": {
+        "en": "May",
+        "sv": "Maj"
+    },
+    "june": {
+        "en": "June",
+        "sv": "Juni"
+    },
+    "july": {
+        "en": "July",
+        "sv": "Juli"
+    },
+    "august": {
+        "en": "August",
+        "sv": "Augusti"
+    },
+    "september": {
+        "en": "September",
+        "sv": "September"
+    },
+    "november": {
+        "en": "November",
+        "sv": "November"
+    },
+    "december": {
+        "en": "December",
+        "sv": "December"
+    },
+    "ljungskile": {
+        "en": "Ljungskile Folk High School",
+        "sv": "Ljungskile Folkhögskola"
+    },
+    "education": {
+        "en": "Education",
+        "sv": "Utbildning"
+    },
+    "hobbies": {
+        "en": "Skills",
+        "sv": "Kompetenser"
+    },
+    "skill1": {
+        "en": "Self-taught in Photoshop and Graphic Design."
+    },
+    "skill2": {
+        "en": "Self-taught in the programming languages Python, SQL and JavaScript"
+    },
+    "skill3": {
+        "en": "Educated in C#, APIs, Data Database Management and Web Development."
+    },
+    "skill4": {
+        "en": "Great interest in collaboration where logical thinking is important."
+    }
+}
