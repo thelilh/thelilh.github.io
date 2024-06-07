@@ -1,8 +1,20 @@
 class ENumber {
-    constructor(name = "", num = "", status = "") {
+    constructor(name = "", num = "", status = "", comment = "") {
         this.Name = name
         this.Number = num;
         this.VeganStatus = status;
+        this.Comment = comment;
+    }
+
+    ToTable() {
+        var style = "";
+        if (this.VeganStatus.toLowerCase() == "vegan") {
+            style = "background-color: green !important; color: white;"
+        }
+        else {
+            style = "background-color: red !important; color: white;"
+        }
+        return "<tr><td>" + this.Name + "</td><td>" + this.Number + "</td><td style=\"" + style + "\">" + Capitalize(this.VeganStatus) + "</td></tr>"
     }
 }
 
@@ -29,17 +41,7 @@ function GetAllENumbers() {
 
 function GenerateTable() {
     GetAllENumbers().forEach((e) => {
-        var style = "";
-        if (e.VeganStatus.toLowerCase() == "vegan") {
-            style = "background-color: green !important; color: white;"
-        }
-        else if (e.VeganStatus.toLowerCase().includes("vegetarian")) {
-            style = "background-color: yellow !important; color: black;"
-        }
-        else {
-            style = "background-color: red !important; color: white;"
-        }
-        eNumberTable.innerHTML += "<tr><td>" + e.Name + "</td><td>" + e.Number + "</td><td style=\"" + style + "\">" + Capitalize(e.VeganStatus) + "</td></tr>"
+        eNumberTable.innerHTML += e.ToTable();
     })
 }
 GenerateTable()
@@ -58,7 +60,7 @@ function Capitalize(text = "") {
     return test;
 }
 
-function myFunction() {
+function searchInTable() {
     // Declare variables
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("searchInput");
@@ -82,3 +84,8 @@ function myFunction() {
         }
     }
 }
+
+function ToggleDarkMode() {
+    var element = document.body;
+    element.classList.toggle("dark-theme");
+  } 

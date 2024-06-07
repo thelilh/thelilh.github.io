@@ -3,14 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="Search and Finding Vegan E-Numbers">
+    <meta name="description" content="Making it easier to search for vegan e-numbers">
+    <meta name="keywords" content="vegan, e-numbers, europe numbers, e-number">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+    <meta name="author" content="Leaf">
+    <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/5/5b/Vegan_friendly_icon.svg" />
     <title>Search for E-Numbers</title>
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="light-theme">
-    <h1>E-Number Search</h1>
-    <input type="text" id="searchInput" onkeyup="myFunction()" placeholder="Search for E-Numbers..">
+<body>
+    <div style="display: flex; flex-direction: column;">
+        <h1>E-Number Search</h1>
+        <button class="darkModeBtn" onclick="ToggleDarkMode()">Toggle dark mode</button>
+    </br>
+    </div>
+    <input type="text" id="searchInput" onkeyup="searchInTable()" placeholder="Search for E-Numbers..">
     <table id="eNumberTable" class="eNumberTable">
         <tr id="header">
             <th>Name</th>
