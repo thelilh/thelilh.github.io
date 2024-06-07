@@ -1,10 +1,23 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search for E-Numbers</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    
+
+<body class="light-theme">
+    <h1>E-Number Search</h1>
+    <input type="text" id="searchInput" onkeyup="myFunction()" placeholder="Search for E-Numbers..">
+    <table id="eNumberTable" class="eNumberTable">
+        <tr id="header">
+            <th>Name</th>
+            <th>Number</th>
+            <th>Vegan Status</th>
+        </tr>
+    </table>
 </body>
+
 </html>
