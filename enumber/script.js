@@ -39,7 +39,7 @@ fetch('./data.json')
     })
     .then(() => {
         citationList.forEach((e) => {
-            citationUl.innerHTML += "<li id=\"citation"+e.GetId()+"\">" + e.ToString() + "</li>"
+            citationUl.innerHTML += `<li id=\"citation${e.GetId()}\">${e.ToString()}</li>`
         });
     });
 

@@ -5,11 +5,11 @@ class Citation {
     }
 
     ToString() {
-        return "<a href=\""+this.Url+"\">"+this.Url+"</a>"
+        return `<a href=\"${this.Url}\">${this.Url}</a>`
     }
 
     ToShortCitation() {
-        return "<a href=\"#citation"+this.Id+"\">["+this.Id+"]</a>"
+        return `<a href=\"#citation${this.Id}\">[${this.Id}]</a>`
     }
 
     GetUrl() {
