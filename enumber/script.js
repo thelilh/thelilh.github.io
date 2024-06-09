@@ -1,50 +1,47 @@
-class ENumber {
-    constructor(name = "", num = "", status = "", comment = "") {
-        this.Name = name
-        this.Number = num;
-        this.VeganStatus = status;
-        this.Comment = comment;
-    }
-
-    ToTable() {
-        var style = "";
-        if (this.VeganStatus.toLowerCase() == "vegan") {
-            style = "background-color: green !important; color: white;"
-        }
-        else {
-            style = "background-color: red !important; color: white;"
-        }
-        return "<tr><td>" + this.Name + "</td><td>" + this.Number + "</td><td style=\"" + style + "\">" + Capitalize(this.VeganStatus) + "</td></tr>"
-    }
-}
-
+var obj;
 let eNumberTable = document.getElementById("eNumberTable");
+var resultHidden = document.getElementById("noResultsTable");
+var blahajBtn = document.getElementById("blahajBtn");
+var citationUl = document.getElementById("citationUl");
+var blahaj = false;
+resultHidden.style.display = "none";
+blahajBtn.style.display = "none";
+var citationList = []
+fetch('./data.json')
+    .then((response) => response.json())
+    .then((json) => obj = json)
+    .then(() => {
+        var citationTemp = []
+        obj.forEach((e) => {
 
-function GetAllENumbers() {
-    return [
-        new ENumber("Curcumin", "100", "vegan"),
-        new ENumber("Riboflavin", "101", "vegan"),
-        new ENumber("Riboflavin-5'-Phosphate", "101a", "vegan"),
-        new ENumber("Tartrazine", "102", "vegan"),
-        new ENumber("Alkannin", "103", "Vegan"),
-        new ENumber("Quinoline Yellow WS", "104", "Vegan"),
-        new ENumber("Fast Yellow AB", "105", "vegan"),
-        new ENumber("Riboflavin-5-Sodium Phosphate", "106", "vegan"),
-        new ENumber("Yellow 2G", "107", "vegan"),
-        new ENumber("Sunset Yellow FCF", "110", "vegan"),
-        new ENumber("Orange GGN", "111", "vegan"),
-        new ENumber("Cochineal, Carminic acid, Carmine", "120", "no"),
-        new ENumber("Citrus Red 2", "121", "vegan")
-        // TODO: Add more E-Numbers
-    ];
-}
-
-function GenerateTable() {
-    GetAllENumbers().forEach((e) => {
-        eNumberTable.innerHTML += e.ToTable();
+            var source = e.source;
+            if (e.source != null && e.source.length > 0) {
+                source = e.source;
+                if (!citationTemp.includes(source)) {
+                    citationTemp.push(source)
+                }
+                var id = citationTemp.indexOf(source);
+                var citation = new Citation(source, id)
+                source = citation.ToShortCitation();
+                if (!citationList.some(function (c) {
+                    return c.ToShortCitation() == citation.ToShortCitation()
+                })) {
+                    citationList.push(citation);
+                }
+                var enumber = new ENumber(e.name, e.eNumber, e.status, e.comment, source)
+                eNumberTable.innerHTML += enumber.ToTable();
+            }
+            else {
+                var enumber = new ENumber(e.name, e.eNumber, e.status, e.comment, source)
+                eNumberTable.innerHTML += enumber.ToTable();
+            }
+        })
     })
-}
-GenerateTable()
+    .then(() => {
+        citationList.forEach((e) => {
+            citationUl.innerHTML += "<li id=\"citation"+e.GetId()+"\">" + e.ToString() + "</li>"
+        });
+    });
 
 function Capitalize(text = "") {
     var split = text.split(/-| /);
@@ -69,7 +66,14 @@ function searchInTable() {
     header = document.getElementById("header");
     tr = table.getElementsByTagName("tr");
 
+    if (filter.trim() == "BLÅHAJ" || filter.trim() == "BLAHAJ") {
+        blahaj = true;
+        blahajBtn.style.display = "";
+        ToggleBlahaj(header);
+    }
+
     // Loop through all table rows, and hide those who don't match the search query
+    var countOfHidden = 0;
     for (i = 0; i < tr.length; i++) {
         td = tr[i];
         if (td) {
@@ -79,13 +83,82 @@ function searchInTable() {
             } else {
                 if (i != 0) {
                     tr[i].style.display = "none";
+                    countOfHidden++;
                 }
             }
         }
+    }
+    if (countOfHidden == tr.length - 1) {
+        ToggleHeaders(header, true)
+        resultHidden.style.display = "";
+    }
+    else {
+        ToggleHeaders(header, false)
+        resultHidden.style.display = "none";
     }
 }
 
 function ToggleDarkMode() {
     var element = document.body;
     element.classList.toggle("dark-theme");
-  } 
+}
+
+function TurnOffBlahaj() {
+    blahaj = false;
+    header = document.getElementById("header");
+    blahajBtn.style.display = "none";
+    ToggleBlahaj(header)
+}
+
+function ToggleBlahaj(header) {
+    var trans = header.getElementsByTagName("th");
+    resultHidden.innerHTML = "test";
+    for (i = 0; i < trans.length; i++) {
+        var currentTd = trans[i];
+        if (i == 0 || i == 4) {
+            if (blahaj) {
+                currentTd.classList.add("transBlue");
+            }
+            else {
+                currentTd.classList.remove("transBlue");
+            }
+        }
+        if (i == 1 || i == 3) {
+            if (blahaj) {
+                currentTd.classList.add("transPink");
+            }
+            else {
+                currentTd.classList.remove("transPink");
+            }
+        }
+        if (i == 2) {
+            if (blahaj) {
+                currentTd.classList.add("transWhite");
+            }
+            else {
+                currentTd.classList.remove("transWhite");
+            }
+        }
+    }
+}
+
+function ToggleHeaders(header, shouldHide = false) {
+    var headers = header.getElementsByTagName("th");
+    for (i = 0; i < headers.length; i++) {
+        if (i != headers.length - 1) {
+            if (shouldHide) {
+                headers[i].style.display = "none"
+            }
+            else {
+                headers[i].style.display = ""
+            }
+        } else {
+            if (shouldHide) {
+                headers[i].style.display = ""
+            }
+            else {
+                headers[i].style.display = "none"
+            }
+        }
+    }
+}

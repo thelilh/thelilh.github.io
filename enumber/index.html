@@ -15,24 +15,38 @@
     <meta property="og:url" content="https://thelilh.github.io/enumber/" />
     <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/5/5b/Vegan_friendly_icon.svg" />
     <title>Search for E-Numbers</title>
-    <script src="script.js" defer></script>
+    <script type="text/javascript" src="enumber.js" defer></script>
+    <script type="text/javascript" src="citation.js" defer></script>
+    <script type="text/javascript" src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div style="display: flex; flex-direction: column;">
+    <div style="display: flex;">
         <h1>E-Number Search</h1>
         <button class="darkModeBtn" onclick="ToggleDarkMode()">Toggle dark mode</button>
-        </br>
+        <button id="blahajBtn" class="darkModeBtn" onclick="TurnOffBlahaj()">Toggle blåhaj</button>
     </div>
-    <input type="text" id="searchInput" onkeyup="searchInTable()" placeholder="Search for E-Numbers..">
-    <table id="eNumberTable" class="eNumberTable">
-        <tr id="header">
-            <th>Name</th>
-            <th>Number</th>
-            <th>Vegan Status</th>
-        </tr>
-    </table>
+        <input type="text" id="searchInput" onkeyup="searchInTable()" placeholder="Search">
+
+        <table id="eNumberTable" class="eNumberTable">
+            <tr id="header">
+                <th>Name</th>
+                <th>Number</th>
+                <th>Vegan Status</th>
+                <th>Comments</th>
+                <th>Source</th>
+                <th id="noResultsTable">No results could be shown</th>
+            </tr>
+        </table>
+       
+    </div>
+    <div id="citations">
+        <h1>Citation List</h1>
+        <ol type="1" id="citationUl"">
+            
+        </ol>
+    </div>
 </body>
 
 </html>
