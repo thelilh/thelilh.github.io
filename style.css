@@ -1,20 +1,24 @@
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,700,900");
-
-body {
-  margin: 0;
-  font-family: "Raleway", sans-serif;
-  text-align: center;
+.contact, .education, .experience {
+    display: block;
+    width: 100%;
+    padding: 1em;
+}
+* {
+    margin: 0;
 }
 
-h1 {
-    font-size: 7em;
+.name .first, .name .nick, .name .last, .email, .github, .phone {
+    float: left;
+    margin-right: 1em;
 }
-a {
-    font-size: 3em;
-    color: black;
-    text-decoration: none;
+
+.name .first, .name .nick {
+    margin-right: 0.4em;
 }
-a:hover {
-    text-decoration: underline;
-    font-weight: bold;
+.name .nick::before, .name .nick::after {
+    content: "\"";
+}
+
+.name h1 { 
+    display: none;
 }

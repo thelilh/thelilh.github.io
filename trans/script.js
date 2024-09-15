@@ -1,7 +1,6 @@
 import { CounterDateTime } from '../modules/CounterDateTime.js';
 
 var calculated_date = new CounterDateTime(new Date("18 September 2020"), new Date());
-console.log(calculated_date.toString());
 
 try {
     const year_element = document.getElementById("years");

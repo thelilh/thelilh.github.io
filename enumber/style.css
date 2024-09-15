@@ -8,7 +8,7 @@
     --warning:  rgb(255,152,0); /* MudBlazor Color */
     --danger: rgb(244,67,54); /* MudBlazor Color */
     --success:  rgb(0,163,68); /* MudBlazor Color */
-    --hover: rgba(0,0,0,0.0392156862745098)  /* MudBlazor Color */
+    --hover: rgba(0,0,0,0.0392156862745098);  /* MudBlazor Color */
 }
 
 .dark-theme {
@@ -127,4 +127,10 @@ th {
 .transWhite {
     background-color: white !important;
     color: #000 !important;
+}
+a {
+    color: var(--text);
+}
+a:hover {
+    color: var(--hover);
 }

@@ -1,21 +1,39 @@
-import { Translations } from '../modules/Translations.js';
+const translations = "experience.json"
 
-let lang = navigator.language.substring(0, 2);
-lang = "sv";
-const translations = await Translations.build("../translations.json", lang);
+fetch(translations)
+    .then((response) => response.json())
+    .then((json) => GenerateWebsite(json));
 
-const listOfTranslations = document.querySelectorAll('[data-translatable]');
-listOfTranslations.forEach((trans) => {
-    const attribute = trans.getAttribute("data-translatable");
-    let getFrom = attribute;
-    if (!attribute) {
-        getFrom = trans.id;
+function GenerateWebsite(json) {
+    let bodyData = ""
+    for (const [key, value] of Object.entries(json)) {
+        bodyData += ReturnSubentries(key, value)
     }
-    const translation = translations.GetString(getFrom);
-    if (translation != "N/A") {
-        trans.innerHTML = translation;
+    document.body.innerHTML = bodyData
+}
+
+function ReturnSubentries(key, entry) {
+    let result = ""
+    if (typeof (entry) == "object") {
+        result += `<div class="${key}"><h1>${capitalizeFirstLetter(key)}</h1>`
+        for (const [key, value] of Object.entries(entry)) {
+            result += ReturnSubentries(key, value)
+        }
+        result += `</div>`
     }
     else {
-        console.warn('Missing translation for "' + getFrom + '"')
+        // okay so this part is fun?
+        if (entry.includes("http://") || entry.includes("https://")) {
+            result += `<a class="${key}" href="${entry}">${entry}</a>`
+        }
+        else {
+            result += `<p class="${key}">${entry}</p>`
+        }
     }
-});
+
+    return result;
+}
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}

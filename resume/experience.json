@@ -1,0 +1,34 @@
+{
+    "contact": {
+        "name": {
+            "first": "Hannah",
+            "nick": "Leaf",
+            "last": "Karlsson"
+        },
+        "email": "hannahskylerfaekarlsson@gmail.com",
+        "github": "https://github.com/thelilh",
+        "phone": "+(46)0725580672"
+    },
+    "education": {
+        "IT Högskolan": {
+            "Start": "2022-08-01",
+            "End": "2024-05-01"
+        }
+    },
+    "experience": {
+        "NovaCura": {
+            "Title": "Backend Developer",
+            "Start": "2023-08-01"
+        },
+        "Magasinet 1": {
+            "Title": "Kitchen assistant",
+            "Start": "2019-05-01",
+            "End": "2019-06-01"
+        },
+        "Kapelludden Borgholm": {
+            "Title": "Kitchen assistant",
+            "Start": "2019-06-01",
+            "End": "2019-07-01"
+        }
+    }
+}
