@@ -27,19 +27,20 @@
         <button class="darkModeBtn" onclick="ToggleDarkMode()">Toggle dark mode</button>
         <button id="blahajBtn" class="darkModeBtn" onclick="TurnOffBlahaj()">Toggle blåhaj</button>
     </div>
-        <input type="text" id="searchInput" onkeyup="searchInTable()" placeholder="Search">
+    <input type="text" id="searchInput" onkeyup="searchInTable()" placeholder="Search">
 
-        <table id="eNumberTable" class="eNumberTable">
-            <tr id="header">
-                <th>Name</th>
-                <th>Number</th>
-                <th>Vegan Status</th>
-                <th>Comments</th>
-                <th>Source</th>
-                <th id="noResultsTable">No results could be shown</th>
-            </tr>
-        </table>
-       
+    <table id="eNumberTable" class="eNumberTable">
+        <tr>
+            <th>Name</th>
+            <th>Number</th>
+            <th>Vegan Status</th>
+            <th>Comments</th>
+            <th>Source</th>
+        </tr>
+        <!-- Table rows will be added dynamically -->
+    </table>
+    <div id="pagination"></div>
+
     </div>
     <div id="citations">
         <h1>Citation List</h1>

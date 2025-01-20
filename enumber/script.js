@@ -1,12 +1,10 @@
 var obj;
 let eNumberTable = document.getElementById("eNumberTable");
-var resultHidden = document.getElementById("noResultsTable");
-var blahajBtn = document.getElementById("blahajBtn");
 var citationUl = document.getElementById("citationUl");
 var blahaj = false;
-resultHidden.style.display = "none";
 blahajBtn.style.display = "none";
 var citationList = []
+var data = []
 fetch('./data.json')
     .then((response) => response.json())
     .then((json) => obj = json)
@@ -29,11 +27,11 @@ fetch('./data.json')
                     citationList.push(citation);
                 }
                 var enumber = new ENumber(e.name, e.eNumber, e.status, e.comment, source)
-                eNumberTable.innerHTML += enumber.ToTable();
+                data.push(enumber);
             }
             else {
                 var enumber = new ENumber(e.name, e.eNumber, e.status, e.comment, source)
-                eNumberTable.innerHTML += enumber.ToTable();
+                data.push(enumber);
             }
         })
     })
@@ -41,6 +39,7 @@ fetch('./data.json')
         citationList.forEach((e) => {
             citationUl.innerHTML += `<li id=\"citation${e.GetId()}\">${e.ToString()}</li>`
         });
+        displayTable(currentPage);
     });
 
 function Capitalize(text = "") {
@@ -59,87 +58,15 @@ function Capitalize(text = "") {
 
 function searchInTable() {
     // Declare variables
-    var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("searchInput");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("eNumberTable");
-    header = document.getElementById("header");
-    tr = table.getElementsByTagName("tr");
+    var input = document.getElementById("searchInput");
+    var filter = input.value.toUpperCase();
 
-    if (filter.trim() == "BLÅHAJ" || filter.trim() == "BLAHAJ") {
-        blahaj = true;
-        blahajBtn.style.display = "";
-        ToggleBlahaj(header);
-    }
-
-    // Loop through all table rows, and hide those who don't match the search query
-    var countOfHidden = 0;
-    for (i = 0; i < tr.length; i++) {
-        td = tr[i];
-        if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-                if (i != 0) {
-                    tr[i].style.display = "none";
-                    countOfHidden++;
-                }
-            }
-        }
-    }
-    if (countOfHidden == tr.length - 1) {
-        ToggleHeaders(header, true)
-        resultHidden.style.display = "";
-    }
-    else {
-        ToggleHeaders(header, false)
-        resultHidden.style.display = "none";
-    }
+    displayTable(currentPage, filter)
 }
 
 function ToggleDarkMode() {
     var element = document.body;
     element.classList.toggle("dark-theme");
-}
-
-function TurnOffBlahaj() {
-    blahaj = false;
-    header = document.getElementById("header");
-    blahajBtn.style.display = "none";
-    ToggleBlahaj(header)
-}
-
-function ToggleBlahaj(header) {
-    var trans = header.getElementsByTagName("th");
-    resultHidden.innerHTML = "test";
-    for (i = 0; i < trans.length; i++) {
-        var currentTd = trans[i];
-        if (i == 0 || i == 4) {
-            if (blahaj) {
-                currentTd.classList.add("transBlue");
-            }
-            else {
-                currentTd.classList.remove("transBlue");
-            }
-        }
-        if (i == 1 || i == 3) {
-            if (blahaj) {
-                currentTd.classList.add("transPink");
-            }
-            else {
-                currentTd.classList.remove("transPink");
-            }
-        }
-        if (i == 2) {
-            if (blahaj) {
-                currentTd.classList.add("transWhite");
-            }
-            else {
-                currentTd.classList.remove("transWhite");
-            }
-        }
-    }
 }
 
 function ToggleHeaders(header, shouldHide = false) {
@@ -162,3 +89,73 @@ function ToggleHeaders(header, shouldHide = false) {
         }
     }
 }
+
+const rowsPerPage = 20;
+let currentPage = 1;
+
+function displayTable(page, searchTerm = "") {
+    const table = document.getElementById("eNumberTable");
+    const startIndex = (page - 1) * rowsPerPage;
+    const endIndex = startIndex + rowsPerPage;
+
+    // Filter data based on search term (case-insensitive)
+    const filteredData = data.filter(item => {
+        const searchString = `${item.Name} ${item.Number} ${item.VeganStatus} ${item.Comment} ${item.Source}`;
+        return searchString.toLowerCase().includes(searchTerm.toLowerCase());
+    });
+
+    const slicedData = filteredData.slice(startIndex, endIndex);
+
+    // Clear existing table rows
+    table.innerHTML = `
+        <tr>
+            <th>Name</th>
+            <th>Number</th>
+            <th>Vegan Status</th>
+            <th>Comments</th>
+            <th>Source</th>
+        </tr>
+    `;
+
+    // Add new rows to the table
+    slicedData.forEach(item => {
+        const row = table.insertRow();
+        const nameCell = row.insertCell(0);
+        const numberCell = row.insertCell(1);
+        const veganStatusCell = row.insertCell(2);
+        const commentsCell = row.insertCell(3);
+        const sourceCell = row.insertCell(4);
+        nameCell.innerHTML = item.Name;
+        numberCell.innerHTML = item.Number;
+        veganStatusCell.innerHTML = item.VeganStatus;
+        commentsCell.innerHTML = item.Comment;
+        sourceCell.innerHTML = item.Source;
+    });
+
+    // Update pagination with the filtered data
+    updatePagination(page, filteredData.length);
+}
+
+
+function updatePagination(currentPage, maxPages) {
+    const pageCount = Math.ceil(maxPages / rowsPerPage);
+    const paginationContainer = document.getElementById("pagination");
+    paginationContainer.innerHTML = "";
+
+    for (let i = 1; i <= pageCount; i++) {
+        const pageLink = document.createElement("a");
+        pageLink.href = "#";
+        pageLink.innerText = i;
+        pageLink.onclick = function () {
+            displayTable(i);
+        };
+        if (i === currentPage) {
+            pageLink.style.fontWeight = "bold";
+        }
+        paginationContainer.appendChild(pageLink);
+        paginationContainer.appendChild(document.createTextNode(" "));
+    }
+}
+
+// Initial display
+displayTable(currentPage);
