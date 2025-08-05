@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" itemscope="" itemtype="http://schema.org/Webpage">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport"
+		content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimal-ui">
+	<title>I suck at RPS</title>
+	<meta name="description" content="If you, like me, suck at RPS, you should try this webpage." />
+
+	<!-- Schema.org (For Google+) -->
+	<meta itemprop="name" content="I suck at RPS">
+	<meta itemprop="description" content="If you, like me, suck at RPS, you should try this webpage." />
+
+	<!-- Twitter Card markup-->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:creator" content="@LovisenSSBM">
+	<meta name="twitter:url" content="https://thelilh.github.io/rps">
+	<meta name="twitter:title" content="I suck at RPS">
+	<meta name="twitter:description" content="If you, like me, suck at RPS, you should try this webpage." />
+	<meta name="twitter:site" content="@LovisenSSBM">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+
+	<!-- and it's easy to individually load additional languages -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/go.min.js"></script>
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js" defer></script>
+
+</head>
+
+<body>
+	<div id="overlay" class="overlay hidden" onclick="dismissAllOverlays()"></div>
+	<div id="scriptDiv" class="hidden">
+		<div class="scriptHeader">
+			<a class="title prevent-select" href="#" target="_blank">Show on GitHub</a>
+			<p class="closeButton cursor-on-hover prevent-select" onclick="hideScript()">X</p>
+		</div>
+		<div class="scriptScroll">
+			<table id="scriptTable">
+				<tbody>
+					<tr>
+						<td>Loading...</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<h1>Amount</h1>
+	<div class="playerCountDiv">
+	<p onclick="setPlayers(1)">Rock Alone</p>
+	<p onclick="setPlayers(2)">Rock Together</p>
+	</div>
+	
+	<div class="rpsWrapper">
+	<div id="rps1">
+		<h1 id="rpsTitle1">ROCK</h1>
+		<img id="rpsImage1" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Wishing_Rock.jpg" alt="Rock" class="rpsImage">
+		<p id="rpsCredit1">By <a href="//commons.wikimedia.org/w/index.php?title=User:Bim24&amp;action=edit&amp;redlink=1" class="new" title="User:Bim24 (page does not exist)">Bim24</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="https://creativecommons.org/licenses/by/4.0" title="Creative Commons Attribution 4.0">CC BY 4.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=158751480">Link</a></p>
+	</div>
+	
+	<div id="rps2">
+		<h1 id="rpsTitle2">ROCK</h1>
+		<img id="rpsImage2" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Wishing_Rock.jpg" alt="Rock" class="rpsImage">
+		<p id="rpsCredit2">By <a href="//commons.wikimedia.org/w/index.php?title=User:Bim24&amp;action=edit&amp;redlink=1" class="new" title="User:Bim24 (page does not exist)">Bim24</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="https://creativecommons.org/licenses/by/4.0" title="Creative Commons Attribution 4.0">CC BY 4.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=158751480">Link</a></p>
+	</div>
+	</div>
+
+	<div class="rpsButtonDiv">
+		<h1 class="cursor-on-hover" onclick="rpsActivate()">Shoot!</h1>
+		<h1>Reset!</h1>
+	</div>
+
+
+	<footer>
+		<p id="scriptButton" class="scriptButton prevent-select cursor-on-hover" onclick="showScript()">Source code</p>
+	</footer>
+</body>
+<html />
