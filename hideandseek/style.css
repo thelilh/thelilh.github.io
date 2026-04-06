@@ -1,0 +1,191 @@
+:root {
+  --bg-color: #f9f7f5;
+  --layer-color: #fff;
+  --padding: 20px;
+  --text-color: #333;
+  --skane-red: #e23d28;
+  --skane-yellow: #f7dd16;
+}
+
+body {
+  color: var(--text-color);
+  background-color: var(--layer-color);
+}
+
+.header {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 10px;
+  max-height: 100px;
+  overflow: hidden;
+  padding: var(--padding);
+  background-color: var(--bg-color);
+}
+.subtitle {
+  display: flex;
+  flex-direction: column;
+}
+
+.subtitle p {
+  font-style: italic;
+}
+
+.scaniaFlag {
+  height: 75px;
+  width: 62px;
+}
+
+#lines,
+#stationSelect {
+  border: 1px solid gray;
+  background-color: var(--layer-color);
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 0.2em;
+  width: 100%;
+}
+
+.bodyWrapper {
+  
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+grid-template-rows: repeat(4, 1fr) .5fr;
+grid-column-gap: 0px;
+grid-row-gap: 0px; 
+  height: 100vh;
+}
+
+.header {
+  grid-area: 1 / 1 / 2 / 6;
+}
+
+.map {
+   grid-area: 2 / 1 / 5 / 6;
+}
+
+.footer {
+   grid-area: 5 / 1 / 6 / 6;
+}
+
+
+/* 
+
+Stations
+Source - https://codepen.io/lenmorld/pen/wxNRPX
+*/
+.selectors {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.mapInformation {
+  display: flex;
+  flex-direction: row;
+  margin-top: 25px;
+}
+
+.map,
+.stationList {
+  padding: var(--padding);
+  background-color: var(--layer-color);
+}
+
+.stationWrapper,
+.stationInfo {
+  width: 100%;
+}
+
+.stations {
+  width: 100%;
+}
+
+.station {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.v-stepper {
+  position: relative;
+  /*   visibility: visible; */
+}
+
+/* regular step */
+.station .circle {
+  background-color: var(--skane-yellow);
+  border: 3px solid var(--skane-red);
+  border-radius: 100%;
+  width: 20px; /* +6 for border */
+  height: 20px;
+  display: inline-block;
+}
+
+.station .line {
+  top: 23px;
+  left: 12px;
+  /*   height: 120px; */
+  height: 100%;
+
+  position: absolute;
+  border-left: 3px solid var(--skane-red);
+}
+
+.station.completed .circle {
+  visibility: visible;
+  background-color: rgb(6, 150, 215);
+  border-color: rgb(6, 150, 215);
+}
+
+.station.completed .line {
+  border-left: 3px solid rgb(6, 150, 215);
+}
+
+.station.active .circle {
+  visibility: visible;
+  border-color: rgb(6, 150, 215);
+}
+
+.station.empty .circle {
+  visibility: hidden;
+}
+
+.station.empty .line {
+  /*     visibility: hidden; */
+  /*   height: 150%; */
+  top: 0;
+  height: 150%;
+}
+
+.station:last-child .line {
+  visibility: hidden;
+}
+
+.content {
+  margin-left: 20px;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+/* FOOTER */
+.footer {
+   width: 100%;
+   background-color: var(--bg-color);
+   text-align: center;
+}
+
+.footer p {
+}
+
+@media screen and (max-width: 600px) {
+  .header {
+    justify-content: center;
+  }
+
+  .mapInformation {
+    flex-direction: column-reverse;
+    gap: 25px;
+  }
+}

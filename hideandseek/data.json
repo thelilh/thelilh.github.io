@@ -1,0 +1,155 @@
+[
+  {
+    "lineNumber": "1",
+    "lineName": "Ramlösa - Båstad",
+    "stations": [
+      "Båstad",
+      "Förslöv",
+      "Barkåkra",
+      "Ängelholm",
+      "Kattarp",
+      "Ödåkra",
+      "Maria",
+      "Helsingborg C",
+      "Ramlösa"
+    ]
+  },
+  {
+    "lineNumber": "2",
+    "lineName": "Ramlösa - Hässleholm",
+    "stations": [
+      "Ramlösa",
+      "Pågarp",
+      "Mörarp",
+      "Bjuv",
+      "Åstorp",
+      "Kvidinge",
+      "Klippan",
+      "Perstorp",
+      "Tyringe",
+      "Hässleholm C"
+    ]
+  },
+  {
+    "lineNumber": "3",
+    "lineName": "Hässleholm - Vittsjö",
+    "stations": ["Hässleholm C", "Bjärnum", "Vittsjö"]
+  },
+  {
+    "lineNumber": "4",
+    "lineName": "Hässleholm - Killeberg",
+    "stations": ["Hässleholm C", "Ballingslöv", "Hästveda", "Osby", "Killeberg"]
+  },
+  {
+    "lineNumber": "5",
+    "lineName": "Hässleholm - Bromölla",
+    "stations": [
+      "Hässleholm C",
+      "Vinslöv",
+      "Önnestad",
+      "Kristianstad C",
+      "Fjälkinge",
+      "Bromölla"
+    ]
+  },
+  {
+    "lineNumber": "6",
+    "lineName": "Malmö C - Hässleholm",
+    "stations": [
+      "Hässleholm C",
+      "Sösdala",
+      "Tjörnarp",
+      "Höör",
+      "Stehag",
+      "Eslöv",
+      "Örtofta",
+      "Stångby",
+      "Lund C",
+      "Klostergården",
+      "Hjärup",
+      "Åkarp",
+      "Burlöv",
+      "Malmö C"
+    ]
+  },
+  {
+    "lineNumber": "7",
+    "lineName": "Malmö C - Åstorp",
+    "stations": [
+      "Åstorp",
+      "Billesholm",
+      "Kågeröd",
+      "Svalöv",
+      "Teckomatorp",
+      "Kävlinge",
+      "Furulund",
+      "Lomma",
+      "Malmö C"
+    ]
+  },
+  {
+    "lineNumber": "8",
+    "lineName": "Ramlösa - Eslöv",
+    "stations": [
+      "Ramlösa",
+      "Gantofta",
+      "Vallåkra",
+      "Tågarp",
+      "Billeberga",
+      "Teckomatorp",
+      "Marieholm",
+      "Eslöv"
+    ]
+  },
+  {
+    "lineNumber": "9",
+    "lineName": "Ramlösa - Lund C",
+    "stations": [
+      "Ramlösa",
+      "Rydebäck",
+      "Glumslöv",
+      "Landskrona",
+      "Häljarp",
+      "Dösjebro",
+      "Kävlinge",
+      "Gunnersbo",
+      "Lund C"
+    ]
+  },
+  {
+    "lineNumber": "10",
+    "lineName": "Malmö C - Persborg",
+    "stations": ["Malmö C", "Östervärn", "Rosengård", "Persborg"]
+  },
+  {
+    "lineNumber": "11",
+    "lineName": "Hyllie - Simrishamn",
+    "stations": [
+      "Hyllie",
+      "Oxie",
+      "Svedala",
+      "Skurup",
+      "Svarte",
+      "Ystad",
+      "Köpingebro",
+      "Tomelilla",
+      "Lunnarp",
+      "Smedstorp",
+      "Gärsnäs",
+      "Simrishamn"
+    ]
+  },
+  {
+    "lineNumber": "12",
+    "lineName": "Malmö C - Trelleborg",
+    "stations": [
+      "Malmö C",
+      "Triangeln",
+      "Hyllie",
+      "Svågerstorp",
+      "Västra Ingelstad",
+      "Östra Grevie",
+      "Trelleborg"
+    ]
+  }
+]

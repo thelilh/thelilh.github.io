@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hide & Seek: Skåne</title>
+    <script type="text/javascript" src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <div class="header">
+      <img
+        class="scaniaFlag"
+        src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Sk%C3%A5nska_flaggan.svg"
+      />
+      <div class="subtitle">
+        <h1>Hide & Seek</h1>
+        <p>Skåne Edition</p>
+      </div>
+    </div>
+    <div class="map">
+      <div class="selectors">
+        <select id="lines" name="lines"></select>
+        <select id="stationSelect"></select>
+      </div>
+      <div class="mapInformation">
+        <div class="stationWrapper">
+          <h1 id="lineName"></h1>
+          <div id="stations" class="stations"></div>
+        </div>
+
+        <div id="stationInfo" class="stationInfo">
+          <h1 id="stationName"></h1>
+          <ul id="stationLines"></ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

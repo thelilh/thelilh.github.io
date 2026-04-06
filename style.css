@@ -1,24 +1,4 @@
-.contact, .education, .experience {
-    display: block;
-    width: 100%;
-    padding: 1em;
-}
 * {
     margin: 0;
-}
-
-.name .first, .name .nick, .name .last, .email, .github, .phone {
-    float: left;
-    margin-right: 1em;
-}
-
-.name .first, .name .nick {
-    margin-right: 0.4em;
-}
-.name .nick::before, .name .nick::after {
-    content: "\"";
-}
-
-.name h1 { 
-    display: none;
+    font-family: Arial, Helvetica, sans-serif;
 }
