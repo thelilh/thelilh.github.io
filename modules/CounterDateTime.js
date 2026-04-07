@@ -27,12 +27,12 @@ export class CounterDateTime {
 
     toString = () => `Years: ${this.years}, Months: ${this.months}, Days: ${this.days}`;
 
-    getYear = () => this.years > 10 ? `${this.years}Y` : `0${this.years}Y`;
-    getYearOnly = () => this.years > 10 ? `${this.years}` : `0${this.years}`;
+    getYear = () => this.years > 10 ? `${this.years}Y` : `${this.years}Y`;
+    getYearOnly = () => this.years > 10 ? `${this.years}` : `${this.years}`;
 
-    getMonth = () => this.months > 10 ? `${this.months}M` : `0${this.months}M`;
-    getMonthOnly = () => this.months > 10 ? `${this.months}` : `0${this.months}`;
+    getMonth = () => this.months > 10 ? `${this.months}M` : `${this.months}M`;
+    getMonthOnly = () => this.months > 10 ? `${this.months}` : `${this.months}`;
 
-    getDay = () => this.days > 10 ? `${this.days}D` : `0${this.days}D`;
-    getDayOnly = () => this.days > 10 ? `${this.days}` : `0${this.days}`;
+    getDay = () => this.days > 10 ? `${this.days}D` : `${this.days}D`;
+    getDayOnly = () => this.days > 10 ? `${this.days}` : `${this.days}`;
 }

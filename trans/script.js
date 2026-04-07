@@ -10,13 +10,13 @@ try {
         if (calculated_date.getYear() == "00Y") {
             year_element.style.display = "none";
         }
-        year_element.innerHTML = calculated_date.getYear();
+        year_element.innerHTML = calculated_date.getYearOnly();
     }
     if (month_element != null) {
-        month_element.innerHTML = calculated_date.getMonth();
+        month_element.innerHTML = calculated_date.getMonthOnly();
     }
     if (day_element != null) {
-        day_element.innerHTML = calculated_date.getDay();
+        day_element.innerHTML = calculated_date.getDayOnly();
     }
 }
 catch (error) {

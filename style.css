@@ -2,3 +2,27 @@
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+.header {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    width: 100%;
+    background-color: #f0f0f0;
+}
+
+.header a {
+    padding: 0.5em 1em;
+    text-decoration: none;
+    color: #000;
+}
+
+.header a:hover {
+    color: #999;
+}
+
+.header a.active {
+    background-color: #000;
+    color: #fff;
+}

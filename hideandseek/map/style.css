@@ -1,0 +1,16 @@
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.content embed {
+    height: 90vh;
+}
+
+.content a {
+    padding: 1em 1em;
+    text-align: center;
+    text-decoration: none;
+    background-color: green;
+    color: white;
+}

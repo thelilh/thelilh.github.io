@@ -5,7 +5,7 @@ var blahaj = false;
 blahajBtn.style.display = "none";
 var citationList = []
 var data = []
-fetch('./data.json')
+fetch('../data.json')
     .then((response) => response.json())
     .then((json) => obj = json)
     .then(() => {
@@ -108,7 +108,7 @@ function displayTable(page, searchTerm = "") {
 
     // Clear existing table rows
     table.innerHTML = `
-        <tr>
+        <tr class="table-header">
             <th>Name</th>
             <th>Number</th>
             <th>Vegan Status</th>
@@ -126,10 +126,19 @@ function displayTable(page, searchTerm = "") {
         const commentsCell = row.insertCell(3);
         const sourceCell = row.insertCell(4);
         nameCell.innerHTML = item.Name;
+        nameCell.dataset.label = "Name";
         numberCell.innerHTML = item.Number;
+        numberCell.dataset.label = "Number";
         veganStatusCell.innerHTML = item.VeganStatus;
+        veganStatusCell.dataset.label = "Vegan Status";
         commentsCell.innerHTML = item.Comment;
+        commentsCell.dataset.label = "Comments";
         sourceCell.innerHTML = item.Source;
+        sourceCell.dataset.label = "Source";
+
+        row.onclick = function () {
+            window.location.href = `../view?id=${item.Number}`;
+        }
     });
 
     // Update pagination with the filtered data
@@ -150,7 +159,7 @@ function updatePagination(currentPage, maxPages) {
             displayTable(i);
         };
         if (i === currentPage) {
-            pageLink.style.fontWeight = "bold";
+            pageLink.classList.add("active");
         }
         paginationContainer.appendChild(pageLink);
         paginationContainer.appendChild(document.createTextNode(" "));

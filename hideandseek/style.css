@@ -12,7 +12,7 @@ body {
   background-color: var(--layer-color);
 }
 
-.header {
+.hideAndSeekHeader {
   display: flex;
   justify-content: left;
   align-items: center;
@@ -22,6 +22,7 @@ body {
   padding: var(--padding);
   background-color: var(--bg-color);
 }
+
 .subtitle {
   display: flex;
   flex-direction: column;
@@ -47,12 +48,12 @@ body {
 }
 
 .bodyWrapper {
-  
-display: grid;
-grid-template-columns: repeat(5, 1fr);
-grid-template-rows: repeat(4, 1fr) .5fr;
-grid-column-gap: 0px;
-grid-row-gap: 0px; 
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr) .5fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
   height: 100vh;
 }
 
@@ -61,11 +62,11 @@ grid-row-gap: 0px;
 }
 
 .map {
-   grid-area: 2 / 1 / 5 / 6;
+  grid-area: 2 / 1 / 5 / 6;
 }
 
 .footer {
-   grid-area: 5 / 1 / 6 / 6;
+  grid-area: 5 / 1 / 6 / 6;
 }
 
 
@@ -78,6 +79,7 @@ Source - https://codepen.io/lenmorld/pen/wxNRPX
   display: flex;
   flex-direction: row;
   gap: 10px;
+  margin-top: 1em;
 }
 
 .mapInformation {
@@ -118,7 +120,8 @@ Source - https://codepen.io/lenmorld/pen/wxNRPX
   background-color: var(--skane-yellow);
   border: 3px solid var(--skane-red);
   border-radius: 100%;
-  width: 20px; /* +6 for border */
+  width: 20px;
+  /* +6 for border */
   height: 20px;
   display: inline-block;
 }
@@ -171,21 +174,41 @@ Source - https://codepen.io/lenmorld/pen/wxNRPX
 
 /* FOOTER */
 .footer {
-   width: 100%;
-   background-color: var(--bg-color);
-   text-align: center;
+  width: 100%;
+  background-color: var(--bg-color);
+  text-align: center;
 }
 
-.footer p {
+
+/* Show Map Header */
+.mapHeader {
+  display: flex;
+  align-items: left;
+  flex-direction: column;
+  gap: 1em;
 }
+
+.showMap {
+  padding: .5em 0em;
+  text-align: center;
+  text-decoration: none;
+  background-color: #444;
+  color: white;
+  font-size: 1.5em;
+}
+
 
 @media screen and (max-width: 600px) {
-  .header {
+  .hideAndSeekHeader {
     justify-content: center;
   }
 
   .mapInformation {
     flex-direction: column-reverse;
     gap: 25px;
+  }
+
+  .selectors {
+    flex-direction: column;
   }
 }

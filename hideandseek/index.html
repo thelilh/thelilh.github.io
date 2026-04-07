@@ -3,23 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hide & Seek: Skåne</title>
+    <title>Hide+Seek: Skåne</title>
     <script type="text/javascript" src="script.js" defer></script>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="../style.css" />
   </head>
   <body>
-    <div class="header">
+    <div class="hideAndSeekHeader">
       <img
         class="scaniaFlag"
         src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Sk%C3%A5nska_flaggan.svg"
       />
       <div class="subtitle">
-        <h1>Hide & Seek</h1>
+        <h1>Hide+Seek</h1>
         <p>Skåne Edition</p>
       </div>
     </div>
     <div class="map">
+      <div class="mapHeader">
+      <h1>Map</h1>
+      <a href="map" class="showMap">Show map</a>
+      </div>
       <div class="selectors">
         <select id="lines" name="lines"></select>
         <select id="stationSelect"></select>

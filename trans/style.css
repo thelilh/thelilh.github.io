@@ -1,14 +1,31 @@
 * {
-    background-color: #F5B7DE !important;
-    color: #fff !important;
+    margin: 0;
+}
+body {
+    background-color: #9FCEEE !important;
 }
 h1 {
-    border-bottom: .75em solid #9FCEEE !important;
     color: #222 !important;
 }
 
-@media only screen and (max-width: 1200px) {
-    h1 {
-        border-bottom: none !important;
-    }
+.white {
+    font-size: 4rem !important;
+    line-height: 1 !important;
+    gap: 1rem;
+    background-color: #fff !important;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.pink, .white, .blue {
+    height: 20vh !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pink {
+    background-color: #FFB6C1 !important;
 }

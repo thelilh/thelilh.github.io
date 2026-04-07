@@ -19,3 +19,7 @@
 .name h1 { 
     display: none;
 }
+
+.content {
+    padding: 1em;
+}

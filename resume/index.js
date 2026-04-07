@@ -9,22 +9,25 @@ function GenerateWebsite(json) {
     for (const [key, value] of Object.entries(json)) {
         bodyData += ReturnSubentries(key, value)
     }
-    document.body.innerHTML = bodyData
+    document.getElementById("content").innerHTML = bodyData
 }
 
 function ReturnSubentries(key, entry) {
     let result = ""
     if (typeof (entry) == "object") {
-        result += `<div class="${key}"><h1>${capitalizeFirstLetter(key)}</h1>`
+        result += `<div class="${key}"><h1>${capitalizeFirstLetter(key)}</h1><div class="subentries">`
         for (const [key, value] of Object.entries(entry)) {
             result += ReturnSubentries(key, value)
         }
-        result += `</div>`
+        result += `</div></div>`
     }
     else {
         // okay so this part is fun?
         if (entry.includes("http://") || entry.includes("https://")) {
             result += `<a class="${key}" href="${entry}">${entry}</a>`
+        }
+        else if (key == "email") {
+            result += `<a class="${key}" href="mailto:${entry}">${entry}</a>`
         }
         else {
             result += `<p class="${key}">${entry}</p>`
